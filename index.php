@@ -34,4 +34,10 @@ foreach ($files as $file) {
         $read = exec("node {$file}");
         echo $read . "\n";
     }
+    
+    // for python files
+    if ($ext === 'py') {
+        $read = exec("python {$file}");
+        echo $read . "\n";
+    }
 }
