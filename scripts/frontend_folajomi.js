@@ -5,6 +5,6 @@ const data = {
     language: "JavaScript"
 }
 
-const output = () => `Hello world, this is ${data.name} with HNG ID ${data.id}, and email ${data.email} using ${data.language} for stage 2 task`
+const output = () => `Hello World, this is ${data.name} with HNGi7 ID ${data.id}, and email ${data.email} using ${data.language} for stage 2 task`
 
 console.log(output());
