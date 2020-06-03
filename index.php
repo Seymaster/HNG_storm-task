@@ -1,4 +1,6 @@
 <?php
+
+
 $extensions = [
     'js' => 'node',
     'php' => 'php',

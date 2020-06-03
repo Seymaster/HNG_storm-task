@@ -9,4 +9,6 @@ function output() {
   return JSON.stringify(data);
 }
 
+//console.log(output());
+
 console.log(output());
