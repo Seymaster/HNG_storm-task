@@ -1,7 +1,7 @@
 const me = {
     Name: 'Ogunwole Oluwatobi',
     hngid: 'HNG-05517',
-    Language: 'javascript',
+    Language: 'Javascript',
     email: 'oluwatstar21@gmail.com'
 }
 
