@@ -8,11 +8,11 @@ def HNG():
 
 
 
-    firstName = "Stanley"
-    LastName = "Ekwebelem"
-    id = "HNG-01260"
+    firstName = "[Stanley]"
+    LastName = "[Ekwebelem]"
+    id = "[HNG-01260]"
     email = "stanleychibuike31@gmail.com"
-    language = "Python"
+    language = "[Python]"
 
 
     print("Hello World, this is " + firstName + " " + LastName  + " with HNGi7 ID " + id + " using " + language + " for stage 2 task. stanleychibuike31@gmail.com")
