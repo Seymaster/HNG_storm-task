@@ -1,11 +1,6 @@
-function printDetails() {
-  const my_id = "HNG-01325"
-  const name = "Steve Waweru"
-  const email = "wawerusteve142@gmail.com" 
-  const language = "Javascript"
-  let result = "Hello World, this is " + name + " with HNGi7 ID " + my_id + " using " + language + " for stage 2."
-
-  console.log(result)
+const resultsHng = function (firstName = "Steve", lastName = "Waweru", id = "HNG-01325", 
+                              language = "Javascript", email = "wawerusteve142@gmail.com") {
+  return `Hello World, this is ${firstName} ${lastName} with HNGi7 ID ${id} using ${language} for stage 2 task. ${email}.`
 }
-
-printDetails()
+resultsHng()
+console.log(resultsHng())
