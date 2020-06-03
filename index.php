@@ -43,7 +43,6 @@ function stripbrackets($data)
 
     $data = preg_replace('/\]/i', '', $data);
     return $data;
-
 }
 
 $members = [];
@@ -186,9 +185,9 @@ $total = count($members);
     <div>
         <div class="container">
             <div class="stat">
-                <p class="bg-green-500 px-2 py-3">Total Submission: <?=$totalScripts?></p>
-                <p class="bg-green-500 px-2 py-3">Passed: <?=$totalPassed?></p>
-                <p class="bg-red-500 px-2 py-3">Failed: <?=$totalScripts - $totalPassed?></p>
+                <p class="bg-green-500 px-2 py-3">Total Submission: <?= $totalScripts ?></p>
+                <p class="bg-green-500 px-2 py-3">Passed: <?= $totalPassed ?></p>
+                <p class="bg-red-500 px-2 py-3">Failed: <?= $totalScripts - $totalPassed ?></p>
             </div>
         </div>
     </div>
@@ -204,32 +203,32 @@ $total = count($members);
         </thead>
         <tbody>
             <!-- use bg-green-500 class for passed -->
-            <?php foreach ($messages as $output): ?>
+            <?php foreach ($messages as $output) : ?>
 
-                <?php if ($output['pass'] === true): ?>
+                <?php if ($output['pass'] === true) : ?>
 
                     <tr class="bg-green-500">
-                        <td class="border px-4 py-2"><?=$output['id']?></td>
-                        <td class="border px-4 py-2"><?=$output['name']?></td>
-                        <td class="border px-4 py-2"><?=$output['message']?></td>
+                        <td class="border px-4 py-2"><?= $output['id'] ?></td>
+                        <td class="border px-4 py-2"><?= $output['name'] ?></td>
+                        <td class="border px-4 py-2"><?= $output['message'] ?></td>
                         <td class="border px-4 py-2">Passed</td>
                     </tr>
-                <?php elseif ($output['pass'] === false): ?>
+                <?php elseif ($output['pass'] === false) : ?>
                     <tr class="bg-red-500">
-                        <td class="border px-4 py-2"><?=$output['id']?></td>
-                        <td class="border px-4 py-2"><?="Incorrect formatting from " . $output['filename']?></td>
-                        <td class="border px-4 py-2"><?=$output['message']?></td>
+                        <td class="border px-4 py-2"><?= $output['id'] ?></td>
+                        <td class="border px-4 py-2"><?= "Incorrect formatting from " . $output['filename'] ?></td>
+                        <td class="border px-4 py-2"><?= $output['message'] ?></td>
                         <td class="border px-4 py-2">Failed</td>
                     </tr>
 
-                <?php endif;?>
+                <?php endif; ?>
 
 
 
                 <!-- use bg-red-500 class for passed -->
 
         </tbody>
-    <?php endforeach;?>
+    <?php endforeach; ?>
     </table>
 </body>
 
