@@ -8,9 +8,6 @@ var myDetails = {
     status: '',
     output: "Hello world , this is Isolokwu patrick C with HNGi7 ID HNG-02529, using JavaScript for stage 2 task. roxxleo49@gmail.com"
 }
-
-//created data varible to read all the value form the fun
 var data = JSON.stringify(myDetails);
 //print the data goten 
 console.log(data);
-console.log("Hello world this is " + myDetails.my_Name + "with HNGi7 ID " + myDetails.HNG_ID + "using " + myDetails.Environment + "for stage 2 task. roxxleo49@gmail.com");
