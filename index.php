@@ -1,10 +1,11 @@
 <?php
 
 //Get scripts
-$files = scandir('scripts');
+$folder = 'testScripts';
+$files = scandir($folder);
 
 //Check if the script exists and set its command
-function getScripts($files)
+function getScripts($files, $folder)
 {
     $extensions = [
         'js' => 'node',
@@ -17,7 +18,7 @@ function getScripts($files)
         $ext = pathinfo($file, PATHINFO_EXTENSION);
         // var_dump($ext);
         if (array_key_exists($ext, $extensions)) {
-            $scripts[] = ['name' => 'scripts/' . $file, 'command' => $extensions[$ext], 'filename' => $file];
+            $scripts[] = ['name' => "$folder/" . $file, 'command' => $extensions[$ext], 'filename' => $file];
 
         }
     }
@@ -26,7 +27,7 @@ function getScripts($files)
 
 };
 
-$scripts = getScripts($files);
+$scripts = getScripts($files, $folder);
 $totalScripts = count($scripts);
 $totalScript = 0;
 $totalPassed = 0;
