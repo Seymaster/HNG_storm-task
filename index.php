@@ -1,4 +1,5 @@
 <?php
+
 $extensions = [
     'js' => 'node',
     'php' => 'php',
@@ -6,13 +7,13 @@ $extensions = [
     'java' => 'java',
 ];
 $count = 0;
-$log_directory = $_SERVER['DOCUMENT_ROOT'] . 'scripts';
+$log_directory = $_SERVER['DOCUMENT_ROOT'] . '/scripts';
 $files = [];
 $content = [];
 define("PASS_TEXT", 
 	"/^Hello\s+World,\s+this\s+is\s+((\w+\s+)+)with\s+HNGi7\s+ID\s+(\d+)\s+using\s+([^\s]+)\s+for\s+stage\s+2\s+task\s*\.\s+(.+\.[\w]+)\s*\.*$/");
 foreach (glob($log_directory . '/*.*') as $file) {
-    $files[] = $file;
+	$files[] = $file;
 }
 
 foreach ($files as $file) {
@@ -23,8 +24,6 @@ foreach ($files as $file) {
 		$command = $extensions[$ext];
 		$data = [];
 		$read = exec("{$command} {$file}",$lines,$status);
-		ob_flush();
-		flush();
 		$item["file"]=$file;
 		if($status==0){
 		    $user = [];
@@ -56,7 +55,6 @@ if ($_SERVER['QUERY_STRING'] === 'json'){
     $myJSON = json_encode($content);
     header('Content-Type: application/json');
     echo $myJSON;
-    flush();
 }
 else{
 	
@@ -76,7 +74,7 @@ else{
     <?php if (isset($data['error'])):?>
 		<p><?php echo $data['error']?></p>
     <?php else: ?>
-		<p><?php echo "Hello World, this is " . $data['name'] . " with HNGi7 ID " . $data['id'] . ' ' . " using " . $data['language'] . " for stage two task"?></?>
+		<p><?php echo "Hello World, this is " . $data['name'] . " with HNGi7 ID " . $data['id'] . ' ' . " using " . $data['language'] . " for stage two task"?></p>
 	<?php endif;?>
 <?php endforeach;?>
 
