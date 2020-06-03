@@ -1,37 +1,40 @@
 <?php
-// $file = 'echo.php';
-
-// if (file_exists($file)) {
-//     $file = dirname(__DIR__) . '/test/' . $file;
-//     shell_exec("node " . $file);
-// }
-
-// $output = shell_exec('ls');
-
-// $output = explode(" ", $output);
-
-// var_dump($output);
-// $file = dirname(__DIR__) . '/test/' . $file;
-
-// include 'script.js';
-
-// error_reporting(E_ALL);
-// ini_set('display_errors', 1);
-
-// $read = exec("node script.js");
-
-// echo $read;
 $log_directory = dirname(__FILE__);
-$files = [];
+// $files = [];
+$path = $log_directory . '\scripts\*.*';
 
-foreach (glob($log_directory . '/*.*') as $file) {
-    $files[] = $file;
-}
+$output = array();
+$res = array();
+$final_res = array();
+$fullnameRegex = "/\sis\s(.*)\swith/";
+$idRegex = "/\sID\s(.*)\susing/";
+$languageRegex = "/\susing\s(.*)\sfor/";
 
-foreach ($files as $file) {
-    $ext = pathinfo($file, PATHINFO_EXTENSION);
-    if ($ext === 'js') {
-        $read = exec("node {$file}");
-        echo $read . "\n";
+foreach (glob($path) as $key => $file) {
+    $new = array();
+    if (pathinfo($file)['extension'] == 'js') {
+        exec("node $file", $output);
+    } else if (pathinfo($file)['extension'] == 'py') {
+        exec("python $file", $output);
+    } else if (pathinfo($file)['extension'] == 'dart') {
+        exec("dart $file", $output);
+    } else if (pathinfo($file)['extension'] == 'php') {
+        exec("php $file", $output);
     }
+
+    if (preg_match("$fullnameRegex", $output[$key], $matches1)) {
+        $new['full name'] = $matches1[1];
+    }
+    if (preg_match("$idRegex", $output[$key], $matches1)) {
+        $new['ID'] = $matches1[1];
+    }
+    if (preg_match("$languageRegex", $output[$key], $matches1)) {
+        $new['language'] = $matches1[1];
+    }
+
+    array_push($res, $new);
 }
+
+
+var_dump(json_encode($res, true));
+ob_flush(); //flusing the output stream
