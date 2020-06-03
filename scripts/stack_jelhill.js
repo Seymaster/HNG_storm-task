@@ -1,12 +1,12 @@
 let jelhill = {
-    name: "Umaru Abduljelili",
+    surname: "Umaru",
+    firstname: "Abduljelili",
     id: "HNG-00204",
-    language: "Javascript"
-  }
+    language: "Javascript",
+    email: "talk2jelili2000@gmail.com",
+    output: function() {
+        return `Hello World, this is [${this.surname}] [${this.firstname}] with HNGi7 ID [${this.id}] using [${this.language}] for stage 2 task. ${this.email}`
+    },
+}
   
-  
-  function introduction(myObject) {
-    return JSON.stringify(`Hello World, this is ${myObject.name} with HNGi7 ID ${myObject.id} using ${myObject.language} for stage 2 task`)
-  }
-  
-  console.log(introduction(jelhill))
+  console.log(jelhill.output())
