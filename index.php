@@ -1,6 +1,5 @@
 <?php
 
-<//Get scripts
 $folder = 'testScripts';
 $files = scandir($folder);
 
@@ -104,7 +103,6 @@ $total = count($members);
 
 // var_dump($message);
 
-	
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -232,5 +230,5 @@ $total = count($members);
     <?php endforeach;?>
     </table>
 </body>
+
 </html>
-<?php }?>
