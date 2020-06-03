@@ -7,7 +7,7 @@ function output() {
         email: "oseraphaels@gmail.com"
     };
     str = 
-    "Hello World, this is Ser Raphaels with HNGi7 ID HNG-04554 using JavaScript for stage 2 task. oseraphaels@gmail.com ";
+    "Hello World, this is Ser Raphaels with HNGi7 ID HNG-04554 using JavaScript for stage 2 task.";
     
     return str;
 }
