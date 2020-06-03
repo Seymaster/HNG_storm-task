@@ -38,6 +38,15 @@ foreach ($scripts as $key => $script) {
     }
 }
 
+function stripbrackets($data)
+{
+    $data = preg_replace('/\[/i', '', $data);
+
+    $data = preg_replace('/\]/i', '', $data);
+    return $data;
+
+}
+
 $members = [];
 $messages = [];
 
@@ -69,7 +78,7 @@ foreach ($content as $key => $data) {
 
                 $messages[] = ['id' => $match['id'], 'message' => $data, 'name' => $fullname, 'pass' => true, 'filename' => $filename];
 
-                $members[] = ['id' => $match['id'], 'firstname' => $match['first'], 'lastname' => $match['last'], 'email' => $email, 'language' => $match['language'], 'filename' => $filename, 'output' => $data];
+                $members[] = ['id' => stripbrackets($match['id']), 'firstname' => stripbrackets($match['first']), 'lastname' => stripbrackets($match['last']), 'email' => $email, 'language' => stripbrackets($match['language']), 'filename' => $filename, 'output' => $data];
             }
         } else {
             $userMessage = str_replace($email, '', $output);
@@ -188,8 +197,8 @@ $total = count($members);
     <table>
         <thead class="bg-blue-700">
             <tr>
-                <th class="w-1/6 px-4 py-2">ID</th>
-                <th class="w-1/6 px-4 py-2">Author</th>
+                <th class="w-1/6 px-4 py-2">HNG ID</th>
+                <th class="w-1/6 px-4 py-2">Name</th>
                 <th class="w-1/2 px-4 py-2">Message</th>
                 <th class="w-1/6 px-4 py-2">Status</th>
             </tr>
