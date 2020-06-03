@@ -6,7 +6,7 @@ let jelhill = {
   
   
   function introduction(myObject) {
-    return `Hello World, this is ${myObject.name} with HNGi7 ID ${myObject.id} using ${myObject.language} for stage 2 task`
+    return JSON.stringify(`Hello World, this is ${myObject.name} with HNGi7 ID ${myObject.id} using ${myObject.language} for stage 2 task`)
   }
   
   console.log(introduction(jelhill))
