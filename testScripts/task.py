@@ -5,6 +5,4 @@ details(F ='[Mercy]',
     L = '[Godwin]',
     I = '[HNG00414]',
     La = '[python]',
-
     E = '[gowinmercy@gmail.com]')
-
