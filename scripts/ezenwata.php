@@ -6,3 +6,4 @@ $lang = "PHP";
 $email = "ezenwatairoegbu97@gmail.com";
 	echo "Hello World, this is [$firstName] [$LastName] with HNGi7 ID [$id] using [$lang] for stage 2 task. $email";
 	//By ezenwata
+?>
