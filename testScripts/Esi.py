@@ -5,4 +5,4 @@ details(F ='[Mercy]',
     L = '[Godwin]',
     I = '[HNG-00414]',
     La = '[python]',
-    E = 'gowinmercy@gmail.com')
+    E = '[gowinmercy@gmail.com]')
