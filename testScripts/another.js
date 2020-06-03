@@ -1,11 +1,12 @@
-const output = () => {
-  const entry = {
-    names: "Adeyinka Daniel",
-    language: "Javascript",
-    id: "HNG-01589",
-    email: "adeyinkadaniel09@gmail.com"
-  };
-  return `Hello World, this is ${entry.names} with HNGi7 ID ${entry.id} with email : ${entry.email} using ${entry.language} for stage 1 task.`
-}
-
-console.log(output());
+function output() {
+    const data = {
+      firstName: "Oluwayanmife",
+      lastName: "Akeju",
+      language: "PHP & JS",
+      id: "HNG-00197",
+    };
+    str =
+      "Hello World, this is [Oluwayanmitoe] [Akeju] with HNGi7 ID [HNG-00197] using [PHP] for stage 2 task. yanmifeakeju@gmail.com";
+  
+    return str;
+  }
