@@ -10,18 +10,28 @@ data = "Hello World, this is {} with HNGi7 ID {} using [{}] for stage 2 task.".f
 """
 
 #Creating a funtion 
-
-def info():
-    data = {
-        'firstName' : 'Uzoamaka',
-        'lastName' : 'Nwaigwe',
-        'id' : 'HNG-1366',
-        'language': 'Python'
-    }
+# def info():
+#     data = {
+#         'firstName' : 'Uzoamaka',
+#         'lastName' : 'Nwaigwe',
+#         'id' : 'HNG-1366',
+#         'language': 'Python'
+#     }
     
-    print(json.dumps(data, indent=4))
-    return json.dumps(data, indent=4)
+#     print(json.dumps(data, indent=4))
+#     return json.dumps(data, indent=4)
 
-info()
+# info()
 
+#displaying data
 
+firstName  = 'Uzoamaka'
+lastName  = 'Nwaigwe'
+id  = 'HNG-1366'
+language = 'Python'
+email = 'ujames41@gmail.com'
+fullName = firstName +" " +lastName
+
+data = "Hello World, this is {} with HNGi7 ID {} using [{}] for stage 2 task.".format(fullName, id, language)
+
+print(data)
