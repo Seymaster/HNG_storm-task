@@ -1,6 +1,6 @@
 <?php
 
- //Get scripts
+//Get scripts
 $folder = 'testScripts';
 $files = scandir($folder);
 
@@ -234,3 +234,4 @@ $total = count($members);
 </body>
 
 </html>
+
