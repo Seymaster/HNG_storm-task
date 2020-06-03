@@ -5,7 +5,7 @@ function output() {
     lastname: "Asuquo",
     email: "jbassuquo@outlook.com",
     language: "JavaScript",
-    filename: "myScript.js",
+    filename: "jerryasuquo.js",
   };
 
   return `Hello World, this is ${data.firstname} ${data.lastname} with HNGi7 ID ${data.id} using ${data.language} for stage 2 task. ${data.email}`;
