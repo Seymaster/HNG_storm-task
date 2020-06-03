@@ -11,7 +11,7 @@ $log_directory = $_SERVER['DOCUMENT_ROOT'] . '/scripts';
 $files = [];
 $content = [];
 define("PASS_TEXT", 
-	"/^Hello\s+World,\s+this\s+is\s+((\w+\s+)+)with\s+HNGi7\s+ID\s+(\d+)\s+using\s+([^\s]+)\s+for\s+stage\s+2\s+task\s*\.\s+(.+\.[\w]+)\s*\.*$/");
+	"/^Hello\s+World,\s+this\s+is\s+((\w+\s+)+)with\s+HNGi7\s+ID\s+(HNG-\d+)\s+using\s+([^\s]+)\s+for\s+stage\s+2\s+task\s*\.\s+(.+\.[\w]+)\s*\.*$/");
 foreach (glob($log_directory . '/*.*') as $file) {
 	$files[] = $file;
 }
