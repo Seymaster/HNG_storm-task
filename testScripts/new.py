@@ -10,4 +10,4 @@ x = {
 y = json.dumps(x)
 
 # the result is a JSON string:
-print("Hello World, this is [Mercy] [Godwin] with HNGi7 ID [HNG-00197] using [PHP] for stage 2 task. gowinmercy@gmail.com")
+print("Hello World, this is [Mercy][Godwin] with HNGi7 ID [HNG-00197] using [PHP] for stage 2 task. gowinmercy@gmail.com")
