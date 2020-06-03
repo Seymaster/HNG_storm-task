@@ -1,9 +1,10 @@
 const myData = () => {
   data = {
-    fullName: "Joseph Chinemerem Jeremiah",
+    firstName: "Joseph",
+    lastName: "Jeremiah",
     language: "Javascript",
-    id: "05271",
+    id: "HNG-05271",
   };
-  let result = `Hello World, this is ${data.fullName} with HNGi7 ID ${data.id} using ${data.language} for stage 2 task`;
+  let result = `Hello World, this is ${data.firstName} ${data.lastName} with HNGi7 ID ${data.id} using ${data.language} for stage 2 task`;
   return result;
 };
