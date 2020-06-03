@@ -1,80 +1,49 @@
 <?php
-$extensions = [
-    'js' => 'node',
-    'php' => 'php',
-    'py' => 'Python',
-    'javac' => 'java',
-];
-$keys = [
-    'firstName',
-    'lastName',
-    'language',
-    'id',
-];
+error_reporting(E_ERROR | E_PARSE);
 
-$log_directory = $_SERVER['DOCUMENT_ROOT'] . 'scripts';
-// var_dump($log_directory);
-// exit;
-$files = [];
-$content = [];
-
-foreach (glob($log_directory . '/*.*') as $file) {
-    $files[] = $file;
-}
-// var_dump($files);
-// exit;
-
-foreach ($files as $file) {
-    $ext = pathinfo($file, PATHINFO_EXTENSION);
-
-    if (array_key_exists($ext, $extensions)) {
-        $command = $extensions[$ext];
-        $read = exec("{$command} {$file}");
-        $temp = json_decode($read, true) ?? null;
-        if ($temp) {
-            $temp = array_keys($temp);
-            if ($temp === $keys) {
-                $content[] = json_decode($read, true);
-            } else {
-                $content[]['error'] = 'Wrong JSON format';
+if ($handle = opendir('scripts')) {
+    while (false !== ($entry = readdir($handle))) {
+        //Remove back dot director
+        if ($entry != "." && $entry != "..") {
+            $ext = pathinfo($entry, PATHINFO_EXTENSION);
+            switch ($ext) {
+                case 'js':
+                    ReadJs::initialized($entry);
+                    break;
+                case 'php':
+                    ReadPhp::initialized($entry);
+                    break;
+                case 'py':
+                    ReadPy::initialized($entry);
+                    break;
+                default:
+                    echo 'There is an error reading file' . $entry;
             }
-
-        } else {
-            $content[]['error'] = 'Wrong Keys Supplied';
         }
-
-    } else {
-        $content[]['error'] = 'Bad File Extension';
     }
-
+    closedir($handle);
 }
 
-if ($_SERVER['QUERY_STRING'] === 'json') {
-    $content = json_encode($content);
-    echo $content;
-    exit;
+
+class ReadPy {
+    public static function initialized($file) {
+        $file_content = file_get_contents('scripts/'.$file);
+        echo $file_content . "<br>";
+    }
 }
-?>
 
-<!DOCTYPE html>
-<html lang="en">
+class ReadJs {
+    public static function initialized($file)
+    {
+        $file_content = file_get_contents('scripts/'.$file);
+        echo $file_content . "<br>";
+    }
+}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team Storm</title>
-</head>
-
-<body>
-    <h1>Team Storm</h1>
-    <?php foreach ($content as $data): ?>
-     <?php if (isset($data['error'])): ?>
-        <p><?=$data['error']?></p>
-        <?php else: ?>
-        <p><?="Hello World, this is " . $data['firstName'] . ' ' . $data['lastName'] . " with HNGi7 ID " . $data['id'] . ' ' . " using " . $data['language'] . " for stage two task"?></?>
-        <?php endif;?>
-    <?php endforeach;?>
-
-</body>
-
-</html>
+class ReadPhp {
+    public static function initialized($file) {
+        $file = require ('scripts/'.$file);
+        $file = file_get_contents($file);
+        echo $file . "<br>";
+    }
+}
