@@ -1,7 +1,13 @@
-def details(F,L,I,La):
-    return ("helloworld, this is ", F, L ,' with HNGi7 ID ',I, ' using ', La, ' for stage 2 task. gowinmercy@gmail.com')
+# a Python object (dict):
+x = {
+  "firstName": "Esi",
+    "lastName": "Esi",
+    "language": "Python ",
+    "id": "HNG-00190",
+}
 
-print(details(F ='[Mercy]',
-    L = '[Godwin]',
-    I = '[HNG-00414]',
-    La = '[python]'))
+# convert into JSON:
+y = json.dumps(x)
+
+# the result is a JSON string:
+print("Hello World, this is [Esi] [Esi] with HNGui7 ID [HNG-00197] using [PHP] for stage 2 task. esiesi@gmail.com")
