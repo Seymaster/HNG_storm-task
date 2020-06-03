@@ -1,61 +1,100 @@
 <?php
 
+//Get scripts
+$files = scandir('scripts');
 
-$extensions = [
-    'js' => 'node',
-    'php' => 'php',
-    'py' => 'Python',
-    'javac' => 'java',
-];
-$keys = [
-    'firstName',
-    'lastName',
-    'language',
-    'id',
-];
+//Check if the script exists and set its command
+function getScripts($files)
+{
+    $extensions = [
+        'js' => 'node',
+        'php' => 'php',
+        'py' => 'Python',
+        'javac' => 'java',
+    ];
 
-$log_directory = $_SERVER['DOCUMENT_ROOT'] . 'scripts';
-// var_dump($log_directory);
-// exit;
-$files = [];
-$content = [];
+    foreach ($files as $file) {
+        $ext = pathinfo($file, PATHINFO_EXTENSION);
+        // var_dump($ext);
+        if (array_key_exists($ext, $extensions)) {
+            $scripts[] = ['name' => 'scripts/' . $file, 'command' => $extensions[$ext], 'filename' => $file];
 
-foreach (glob($log_directory . '/*.*') as $file) {
-    $files[] = $file;
+        }
+    }
+
+    return $scripts;
+
+};
+
+$scripts = getScripts($files);
+$totalScripts = count($scripts);
+$totalScript = 0;
+$totalPassed = 0;
+
+//Loop through the scripts, execute and store it output in an array
+foreach ($scripts as $key => $script) {
+    if (file_exists($scripts[$key]['name'])) {
+        $read = exec("{$scripts[$key]['command']} {$scripts[$key]['name']}");
+        $content[] = ['output' => $read, 'filename' => $scripts[$key]['name']];
+    }
+
 }
-// var_dump($files);
-// exit;
 
-foreach ($files as $file) {
-    $ext = pathinfo($file, PATHINFO_EXTENSION);
+$members = [];
+$messages = [];
 
-    if (array_key_exists($ext, $extensions)) {
-        $command = $extensions[$ext];
-        $read = exec("{$command} {$file}");
-        $temp = json_decode($read, true) ?? null;
-        if ($temp) {
-            $temp = array_keys($temp);
-            if ($temp === $keys) {
-                $content[] = json_decode($read, true);
-            } else {
-                $content[]['error'] = 'Wrong JSON format';
+$re = '/^Hello World, this is (?<first>\[\w+\])? (?<last>\[\w+\])? with HNGI7 ID (?<id>\[HNG-\d+\])? using (?<language>\[\w+\])? for stage 2 task. /i';
+
+foreach ($content as $key => $data) {
+    $output = $content[$key]['output'];
+    $str = $output;
+    $email = explode(" ", $str);
+    $email = array_pop($email);
+    $email = trim($email);
+    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        preg_match_all($re, $str, $matches, PREG_SET_ORDER, 0);
+        $filename = $content[$key]['filename'];
+        if ($matches) {
+            foreach ($matches as $match) {
+                $totalPassed++;
+                $userData = $match[0];
+
+                $data = preg_replace('/\[/i', '', $userData);
+
+                $data = preg_replace('/\]/i', '', $data);
+
+                $messages[] = ['id' => $match['id'], 'message' => $data, 'pass' => true, 'filename' => $filename];
+
+                $members[] = ['id' => $match['id'], 'firstname' => $match['first'], 'lastname' => $match['last'], 'email' => $email, 'language' => $match['language'], 'filename' => $filename, 'output' => $data];
             }
-
         } else {
-            $content[]['error'] = 'Wrong Keys Supplied';
+            $userMessage = str_replace($email, '', $output);
+            $userMessage = preg_replace('/\[/', '', $userMessage);
+            $userMessage = preg_replace('/\]/', '', $userMessage);
+            $messages[] = ['id' => 'Poorly Formated File', 'message' => $userMessage, 'pass' => false, "filename" => "Incorrect response from script {$filename}"];
+
         }
 
     } else {
-        $content[]['error'] = 'Bad File Extension';
+        $failed = "You did not provide a valid email address. Your String must return an email";
+        $messages[] = ['id' => 'No Email Returned', 'message' => $failed, 'pass' => false, 'filename' => $filename];
     }
 
 }
 
 if ($_SERVER['QUERY_STRING'] === 'json') {
-    $content = json_encode($content);
-    echo $content;
+    $members = json_encode($members);
+    header('Content-Type: application/json');
+    echo $members;
     exit;
 }
+
+$total = count($members);
+echo $totalPassed;
+echo $totalScripts;
+
+// var_dump($message);
+
 ?>
 
 <!DOCTYPE html>
@@ -69,13 +108,14 @@ if ($_SERVER['QUERY_STRING'] === 'json') {
 
 <body>
     <h1>Team Storm</h1>
-    <?php foreach ($content as $data): ?>
-     <?php if (isset($data['error'])): ?>
-        <p><?=$data['error']?></p>
-        <?php else: ?>
-        <p><?="Hello World, this is " . $data['firstName'] . ' ' . $data['lastName'] . " with HNGi7 ID " . $data['id'] . ' ' . " using " . $data['language'] . " for stage two task"?></?>
-        <?php endif;?>
+    <?php foreach ($messages as $output): ?>
+    <?php if ($output['pass'] === true): ?>
+   <p><?=($output['message']) . "Passed"?></?>
+    <?php elseif ($output['pass'] === false): ?>
+        <p><?=$output['message'] . " Failed"?> </p?>
+    <?php endif;?>
     <?php endforeach;?>
+
 
 </body>
 
