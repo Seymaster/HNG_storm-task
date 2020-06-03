@@ -5,4 +5,4 @@ var alpha = {
 	language: "JavaScript",
 	id: "HNG-00265",
 };
-document.write("this is " + alpha.firstName  + alpha.lastName + " with email " + alpha.email + " and HNG7i ID " + alpha.id + " using " + alpha.language + " for Stage 2 task"); 
+document.write("Hello world, this is " + alpha.firstName  + alpha.lastName + " with HNG7i ID " + alpha.id + " using " + alpha.language + " for Stage 2 task." + alpha.email); 
