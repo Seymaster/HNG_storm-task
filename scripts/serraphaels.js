@@ -1,6 +1,7 @@
 function output() {
     const data = {
-        fullName: "Ser Raphaels",
+        fullName: "Ser"
+        lastName:  "Raphaels",
         language: "JavaScript",
         id: "HNG-04554",
         email: "oseraphaels@gmail.com"
