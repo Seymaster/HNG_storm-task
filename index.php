@@ -1,7 +1,7 @@
 <?php
 
 //Get scripts
-$folder = 'scripts';
+$folder = 'testScripts';
 $files = scandir($folder);
 
 //Check if the script exists and set its command
