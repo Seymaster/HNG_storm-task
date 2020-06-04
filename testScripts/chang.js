@@ -6,7 +6,7 @@ const me =()=> {
       id: "HNG-05099",
       mail: 'rorewole@gmail.com'
     };
-    const result = `Hello World, this is [Orewole] [Rahman] with HNGi7 ID [HNG-05099] using [JavaScript] for stage two task. with email [rorewole@gmail.com]`  
+    const result = `Hello World, this is ${myData.firstname} ${myData.lastname} with HNGi7 ID [${myData.id}] with email [${myData.mail}] using [${myData.language}] for stage 2 task.`  
     return result;
   }
   
