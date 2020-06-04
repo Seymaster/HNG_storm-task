@@ -313,8 +313,8 @@ $total = count($members);
         background-color: #51B25C;
         color: white;
         padding: 4px;
-        margin: auto,
-            width: 80%;
+        margin: auto;
+        width: 85%;
     }
 
     .fail {
@@ -432,7 +432,7 @@ $total = count($members);
                         <tr>
                             <th>HNGID</th>
                             <th>Name</th>
-                            <th>Email</th>
+                            <!-- <th>Email</th> -->
                             <th>Message</th>
                             <th>Status</th>
                         </tr>
