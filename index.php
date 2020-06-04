@@ -1,6 +1,4 @@
 <?php
-// error_reporting(E_ERROR | E_PARSE);
-
 //Get scripts
 $folder = 'scripts';
 $files = scandir($folder);
