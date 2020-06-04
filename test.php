@@ -11,6 +11,7 @@ function getScripts($files)
         'php' => 'php',
         'py' => 'Python',
         'javac' => 'java',
+        'dart' => 'dart',
     ];
 
     foreach ($files as $file) {

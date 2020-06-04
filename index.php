@@ -11,6 +11,7 @@ function getScripts($files, $folder)
         'js' => 'node',
         'php' => 'php',
         'py' => 'python',
+        'dart' => 'dart',
     ];
 
     foreach ($files as $file) {
