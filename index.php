@@ -3,7 +3,26 @@
 //Get scripts
 $folder = 'testScripts';
 $files = scandir($folder);
-
+$cacheFile = '.cache.json';
+/*
+Cache Modes
+cache-only - uses only values in cache
+cache-file - uses file if no cache
+cache-if-unchanged - uses cache if file has not changed
+*/
+define("NO_CACHE",0);
+define("CACHE_ONLY",1);
+define("CACHE_FILE",2);
+define("CACHE_UNCHANGED",4);
+$cacheMode = CACHE_UNCHANGED;
+if($cacheMode > NO_CACHE){
+    if(file_exists($cacheFile)){
+        $cache = json_decode(file_get_contents($cacheFile),true);
+    }
+    else{
+        $cache = [];
+    } 
+}
 //Check if the script exists and set its command
 function getScripts($files, $folder)
 {
@@ -31,12 +50,30 @@ $totalPassed = 0;
 
 //Loop through the scripts, execute and store it output in an array
 foreach ($scripts as $key => $script) {
-    if (file_exists($scripts[$key]['name'])) {
-        $read = exec("{$scripts[$key]['command']} {$scripts[$key]['name']}");
-        $content[] = ['output' => $read, 'filename' => $scripts[$key]['name']];
+    $result = false;
+    if(($cacheMode >NO_CACHE) && array_key_exists($script['name'],$cache)){
+        $result = $cache[$script['name']];
     }
+    if($cacheMode == CACHE_UNCHANGED){
+        $file_content = file_get_contents($script['name']);
+        if($cache[$script['name'].".".'content'] != $file_content){
+            echo "Updating ".$script['name'];
+            $result = false;
+            $cache[$script['name'].".".'content'] = $file_content;
+        }
+    }
+    if (!$result && $cacheMode!=CACHE_ONLY && file_exists($scripts[$key]['name'])) {
+        $read = exec("{$scripts[$key]['command']} {$scripts[$key]['name']}");
+        $result = ['output' => $read, 'filename' => $scripts[$key]['name']];
+        if($cacheMode > NO_CACHE){
+            $cache[$script['name']]=$result;
+        }
+    }
+    $content[]=$result;
 }
-
+if($cacheMode> CACHE_ONLY){
+    file_put_contents($cacheFile,json_encode($cache));
+}
 function stripbrackets($data)
 {
     $data = preg_replace('/\[/i', '', $data);
