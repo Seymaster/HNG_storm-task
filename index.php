@@ -1,5 +1,5 @@
 <?php
-
+require 'frontend/topcache.php';
 //Get scripts
 $folder = 'scripts';
 $files = scandir($folder);
@@ -10,7 +10,7 @@ function getScripts($files, $folder)
     $extensions = [
         'js' => 'node',
         'php' => 'php',
-        'py' => 'python3',
+        'py' => 'Python',
     ];
 
     foreach ($files as $file) {
@@ -60,7 +60,7 @@ foreach ($scripts as $key => $script) {
 $members = [];
 $messages = [];
 
-$re = '/^Hello World, this is (?<first>\[\w+\])? (?<last>\[\w+\])? with HNGI7 ID (?<id>\[HNG-\d+\])? using (?<language>\[\w+\])? for stage 2 task./i';
+$re = '/^Hello World, this is (?<first>\[\w+\])? (?<last>\[\w+\])? with HNGI7 ID (?<id>\[HNG-\d+\])? using (?<language>\[\w+\])? for stage 2 task. /i';
 
 foreach ($content as $key => $data) {
     $output = $content[$key]['output'];
@@ -68,7 +68,14 @@ foreach ($content as $key => $data) {
     $email = explode(" ", $str);
     $email = array_pop($email);
     $email = trim($email);
+
     $filename = $content[$key]['filename'];
+    // var_dump($filename);
+    // var_dump($email);
+    // echo "<br>";
+    // echo "<br>";
+    // continue;
+
     $fileID = formatFileID($filename);
     if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
         preg_match_all($re, $str, $matches, PREG_SET_ORDER, 0);
@@ -104,7 +111,7 @@ foreach ($content as $key => $data) {
             $userMessage = str_replace($email, '', $output);
             $userMessage = preg_replace('/\[/', '', $userMessage);
             $userMessage = preg_replace('/\]/', '', $userMessage);
-            $messages[$fileID] = ['id' => 'Poorly Formated File', 'message' => $userMessage, 'pass' => false, "filename" => $filename, 'errors' => 'Email is invalid or not provided',
+            $messages[$fileID] = ['id' => $fileID, 'message' => $userMessage, 'pass' => false, "filename" => $filename, 'errors' => $fileID . ' failed eith invalid email.',
             ];
 
             $members[] = [
@@ -119,7 +126,7 @@ foreach ($content as $key => $data) {
             ];
         }
     } else {
-        $output = $userMessage ?? 'Your script failed to return an output';
+        $output = $userMessage ?? $fileID . ' failed: Script did not return an output';
         $failed = "Wrong Output";
         $messages[$fileID] = ['id' => $fileID, 'message' => $output, 'pass' => false, 'filename' => $filename, 'errors' => $failed];
         $members[$fileID] = [
@@ -195,3 +202,5 @@ $total = count($members);
 // exit;
 
 include 'frontend/main.php';
+
+require 'frontend/bottomcache.php';

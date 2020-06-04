@@ -12,10 +12,7 @@
         </thead>
         <tbody>
             <!-- use bg-green-500 class for passed -->
-            <?php if (ob_get_level()) {
-    ob_start();
-}
-?>
+
             <?php foreach ($messages as $output): ?>
 
 
@@ -42,9 +39,6 @@
                     </tr>
 
                 <?php endif;?>
-
-                <?php ob_flush();
-flush();?>
             <?php endforeach;?>
             <!-- <tr>
                             <td>12334455</td>
