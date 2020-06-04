@@ -1,5 +1,4 @@
 <?php
-
 //Get scripts
 $folder = 'testScripts';
 $files = scandir($folder);
@@ -23,6 +22,36 @@ function getScripts($files, $folder)
 
     return $scripts;
 };
+function stripbrackets($data)
+{
+    $data = preg_replace('/\[/i', '', $data);
+
+    $data = preg_replace('/\]/i', '', $data);
+    return $data;
+}
+
+function formatFileName($file)
+{
+    $file = explode("/", $file);
+    $file = $file[1];
+    return $file;
+}
+
+function outputKey($file)
+{
+    $file = explode(".", $file);
+    $file = $file[0];
+    return $file;
+}
+
+function validateString($string)
+{
+    $string = stripbrackets($string);
+    if (preg_match('/\w/i', $string)) {
+
+    }
+
+}
 
 $scripts = getScripts($files, $folder);
 $totalScripts = count($scripts);
@@ -37,58 +66,114 @@ foreach ($scripts as $key => $script) {
     }
 }
 
-function stripbrackets($data)
-{
-    $data = preg_replace('/\[/i', '', $data);
-
-    $data = preg_replace('/\]/i', '', $data);
-    return $data;
-
-}
-
 $members = [];
 $messages = [];
 
-$re = '/^Hello World, this is (?<first>\[\w+\])? (?<last>\[\w+\])? with HNGI7 ID (?<id>\[HNG-\d+\])? using (?<language>\[\w+\])? for stage 2 task. /i';
+$str = 'HNG-00197';
 
+$str = 'PHP';
+$i = 0;
 foreach ($content as $key => $data) {
-    $output = $content[$key]['output'];
+
+    $userData = [];
+    $firstName = '';
+    $lastName = '';
+    $filename = formatFileName($content[$key]['filename']);
+    $outputkey = outputKey($filename);
+    $messages[$outputkey]['filename'] = $filename;
+
+    $output = trim($content[$key]['output']);
     $str = $output;
-    $email = explode(" ", $str);
-    $email = array_pop($email);
-    $email = trim($email);
-    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        preg_match_all($re, $str, $matches, PREG_SET_ORDER, 0);
-        $filename = $content[$key]['filename'];
-        if ($matches) {
-            foreach ($matches as $match) {
-                $totalPassed++;
-                $userData = $match[0];
+    $str = explode(" ", $output);
+    $messages[$outputkey]['expected_input'] = "Hello World, this is name name with HNGi7 ID [HNG-0000] with email [intern@gmail.com] using [PHP] for stage two task.";
+    foreach ($str as $input) {
+        //Regex that  match HNG-00000
+        $id = '/^HNG-\d+/i';
 
-                $data = preg_replace('/\[/i', '', $userData);
-
-                $data = preg_replace('/\]/i', '', $data);
-
-                $fullname = $match['first'] . ' ' . $match['last'];
-
-                $fullname = preg_replace('/\[/i', '', $fullname);
-
-                $fullname = preg_replace('/\]/i', '', $fullname);
-
-                $messages[] = ['id' => $match['id'], 'message' => $data, 'name' => $fullname, 'pass' => true, 'filename' => $filename];
-
-                $members[] = ['id' => stripbrackets($match['id']), 'firstname' => stripbrackets($match['first']), 'lastname' => stripbrackets($match['last']), 'email' => $email, 'language' => stripbrackets($match['language']), 'filename' => $filename, 'output' => $data];
-            }
-        } else {
-            $userMessage = str_replace($email, '', $output);
-            $userMessage = preg_replace('/\[/', '', $userMessage);
-            $userMessage = preg_replace('/\]/', '', $userMessage);
-            $messages[] = ['id' => 'Poorly Formated File', 'message' => $userMessage, 'pass' => false, "filename" => $filename];
+        if (preg_match('/[\[\w+\d+\-@]]/i', $input)) {
+            $userData[] = $input;
+            $index = array_search($input, $str);
+            unset($str[$index]);
         }
-    } else {
-        $failed = "You did not provide a valid email address. Your String must return an email";
-        $messages[] = ['id' => 'No Email Returned', 'message' => $failed, 'pass' => false, 'filename' => $filename];
     }
+
+    $str = implode(" ", $str);
+    $re = $re = '/^Hello World,\sthis is (?<name>[\w\s]+ )with HNGi7 ID with email using for stage [two|2]+ task./i';
+    if (!preg_match_all($re, $str)) {
+        $message[$outputkey]['error'][] = "Your string does not match expected output";
+        $messages[$outputkey]['output'] = $output;
+        $messages[$outputkey]['pass'] = false;
+
+    } else {
+        preg_match_all($re, $str, $matches, PREG_SET_ORDER, 0);
+        $name = trim($matches[0]["name"]);
+        $name = explode(" ", $name);
+        $firstName = $name[0];
+        $lastName = $name[1];
+
+        if (!empty($name)) {
+            $otherNames = implode(" ", $name);
+        }
+
+    }
+
+    if (empty($userData)) {
+        $userID = '';
+        $userEmail = '';
+        $userLanguage = '';
+        $messages[$outputkey]['error'][] = "You did not return the required parameters as required";
+        $messages[$outputkey]['pass'] = false;
+        if ($output === '') {
+            $messages[$outputkey]['output'] = 'You script did not return an output';
+        } else {
+            $messages[$outputkey]['output'] = stripbrackets($output);
+        }
+    } else if (count($userData) === 3) {
+        $userID = (stripbrackets($userData[0])) ? stripbrackets($userData[0]) : '';
+        $userEmail = (stripbrackets($userData[1])) ? stripbrackets($userData[1]) : '';
+        $userLanguage = (stripbrackets($userData[2])) ? stripbrackets($userData[2]) : '';
+    } else {
+        $messages[$outputkey]['pass'] = false;
+        $messages[$outputkey]['error'][] = "Your are required to return exactly 3 parameters with your string: HNG ID, email, and programming language enclosed in square brackets";
+        $messages[$outputkey]['output'] = stripbrackets($output);
+    }
+
+    if (preg_match($id, $userID)) {
+        $messages[$outputkey]['id'] = $userID;
+    } else {
+        $messages[$outputkey]['pass'] = false;
+        $messages[$outputkey]['error'][] = "Incorrect ID supplied";
+    }
+
+    if (filter_var($userEmail, FILTER_VALIDATE_EMAIL)) {
+        $messages[$outputkey]['email'] = $userEmail;
+    } else {
+        $messages[$outputkey]['pass'] = false;
+        $messages[$outputkey]['error'][] = "Invalid Email";
+    }
+
+    if (empty($messages[$outputkey]['error']) && ($firstName
+        !== '' && $lastName !== '')) {
+        $members[$outputkey]['id'] = $userID;
+        $members[$outputkey]['email'] = $userEmail;
+        $members[$outputkey]['fistName'] = $firstName;
+        $members[$outputkey]['lastName'] = $lastName;
+        $members[$outputkey]['filename'] = $filename;
+        $members[$outputkey]['language'] = $userLanguage;
+        $members[$outputkey]['output'] = stripbrackets($output);
+
+        if (!empty($otherNames)) {
+            $members[$outputkey]['otherNames'] = $otherNames;
+        } else {
+            $members[$outputkey]['otherNames'] = null;
+        }
+
+        $messages[$outputkey]['pass'] = true;
+        $messages[$outputkey]['id'] = $userID;
+        $messages[$outputkey]['output'] = stripbrackets($output);
+        $messages[$outputkey]['name'] = $firstName . ' ' . $lastName;
+    }
+
 }
 
 if ($_SERVER['QUERY_STRING'] === 'json') {
