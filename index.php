@@ -8,7 +8,7 @@ $files = scandir($folder);
 //Check if the script exists and set its command
 function getScripts($files, $folder)
 {
-    $extensions = [A
+    $extensions = [
         'js' => 'node',
         'php' => 'php',
         'py' => 'python3',
