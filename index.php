@@ -1,5 +1,5 @@
 <?php
-// error_reporting(E_ERROR | E_PARSE);
+
 
 //Get scripts
 $folder = 'scripts';
@@ -8,7 +8,7 @@ $files = scandir($folder);
 //Check if the script exists and set its command
 function getScripts($files, $folder)
 {
-    $extensions = [
+    $extensions = [A
         'js' => 'node',
         'php' => 'php',
         'py' => 'python3',
