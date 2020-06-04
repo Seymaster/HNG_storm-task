@@ -57,6 +57,7 @@
       }
     </style>
   </head>
+
   <body>
     <header>
       <div class="container">
@@ -81,9 +82,18 @@
     <div>
       <div class="container">
         <div class="stat">
-          <p class="bg-green-500 px-2 py-3">Total Submission: 100</p>
-          <p class="bg-green-500 px-2 py-3">Passed: 3000</p>
-          <p class="bg-red-500 px-2 py-3">Failed: 0</p>
+          <p class="bg-green-500 px-2 py-3">
+            Total Submission:
+            <?=$totalScripts?>
+          </p>
+          <p class="bg-green-500 px-2 py-3">
+            Passed:
+            <?=$total?>
+          </p>
+          <p class="bg-red-500 px-2 py-3">
+            Failed:
+            <?=$totalScripts - $totalPassed?>
+          </p>
         </div>
       </div>
     </div>
@@ -93,26 +103,31 @@
         <tr>
           <th class="w-1/6 px-4 py-2">HNG ID</th>
           <th class="w-1/6 px-4 py-2">Name</th>
-          <th class="w-1/2 px-4 py-2">Message</th>
-          <th class="w-1/6 px-4 py-2">Email</th>
+          <th class="w-1/2 px-4 py-2">Output</th>
+          <th class="w-1/6 px-4 py-2">Filename</th>
         </tr>
       </thead>
       <tbody>
         <!-- use bg-green-500 class for passed -->
+        <?php foreach ($messages as $key => $script): ?>
+        <?php if (empty($script['error'])): ?>
         <tr class="bg-green-500">
-          <td class="border px-4 py-2">1</td>
-          <td class="border px-4 py-2">Joshua Folorunsho</td>
-          <td class="border px-4 py-2">Intro to CSS</td>
-          <td class="border px-4 py-2">Passed</td>
+          <td class="border px-4 py-2"><?=$script['id']?></td>
+          <td class="border px-4 py-2"><?=$script['name']?></td>
+          <td class="border px-4 py-2"><?=$script['output']?></td>
+          <td class="border px-4 py-2"><a href="?file=<?=$key?>" target="_blank" rel="noopener noreferrer"><?=$script['filename']?></a></td>
         </tr>
-        <!-- use bg-red-500 class for passed -->
+        <?php else: ?>
         <tr class="bg-red-500">
-          <td class="border px-4 py-2">2</td>
+          <td class="border px-4 py-2"><?="You have " . count($script['error']) . " error(s) in your script. Click filename for details"?></td>
           <td class="border px-4 py-2">Joshua Folorunsho</td>
-          <td class="border px-4 py-2">Intro to CSS</td>
-          <td class="border px-4 py-2">Failed</td>
+          <td class="border px-4 py-2"><?=$script['output']?></td>
+          <td class="border px-4 py-2"><a href="?file=<?=$key?>" target="_blank" rel="noopener noreferrer"><?=$script['filename']?></a></td>
         </tr>
+
+        <?php endif;?>
       </tbody>
+      <?php endforeach;?>
     </table>
   </body>
 </html>
