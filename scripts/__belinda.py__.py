@@ -5,7 +5,7 @@ language = "[python]"
 email = "adwoaagyeman3@gmail.com"
 
 def my_details():
-  print "Hello World, this is %s %s with HNGi7 ID %s using %s for stage 2 task. %s" %(first_name, last_name, hng_id, language, email)  
+  print("Hello World, this is %s %s with HNGi7 ID %s using %s for stage 2 task. %s" %(first_name, last_name, hng_id, language, email))  
 
 
 my_details()
