@@ -6,8 +6,7 @@ function output() {
     id: "HNG-00197",
   };
 
-  str =
-    "Hello World, this is [Oluwayanmitoe] [Akeju] with HNGi7 [ID] using [PHP] for stage 2 task. tola@gmail.com";
+  str = "Hello World";
 
   return str;
 }
