@@ -1,5 +1,5 @@
 <?php
-
+// error_reporting(E_ERROR | E_PARSE);
 
 //Get scripts
 $folder = 'scripts';
@@ -106,7 +106,7 @@ foreach ($content as $key => $data) {
                 ];
         }
     } else {
-        // $failed = "You did not provide a valid email address. Your String must return an email";
+        $failed = "You did not provide a valid email address. Your String must return an email";
         // $messages[] = ['id' => 'No Email Returned', 'message' => $failed, 'pass' => false, 'filename' => $filename];
         $members[] = [
                     'output' => $data,
@@ -457,7 +457,7 @@ $total = count($members);
                         </tr>
                         <?php elseif ($output['pass'] === false): ?>
                         <tr>
-                            <td><?=$output['id']?></td>
+                            <td><?=$output['output']['output']?></td>
                             <td"><?="Incorrect formatting from " . $output['filename']?></td>
                                 <td"><?=$output['message']?></td>
                                     <td>
