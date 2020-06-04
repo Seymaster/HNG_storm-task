@@ -58,10 +58,10 @@ foreach ($content as $key => $data) {
     $output = $content[$key]['output'];
     $str = $output;
     $userMessage = $output;
-    print_r($userMessage);
+
     $matcher = preg_match($pattern,$str,$matches);
         $filename = $content[$key]['filename'];
-        print_r($matches);
+
         if ($matches) {
             $useroutput = $matches[0];
             $totalPassed++;
