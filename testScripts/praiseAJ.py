@@ -3,7 +3,7 @@ details = {
     "lname": "Ajayi",
     "ID": "HNG-04513",
     "lang": "python",
-    "email": "praiseajayi2@gmail.com"
+    "email": "praiseajayi2@gmail.com",
     }
     
 
