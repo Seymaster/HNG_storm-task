@@ -1,7 +1,7 @@
 <?php
 
 //Get scripts
-$folder = 'testScripts';
+$folder = 'scripts';
 $files = scandir($folder);
 
 //Check if the script exists and set its command
@@ -57,17 +57,17 @@ foreach ($content as $key => $data) {
     $email = explode(" ", $str);
     $email = array_pop($email);
     $email = trim($email);
+    $filename = $content[$key]['filename'];
     if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        preg_match_all($re, $str, $matches, PREG_SET_ORDER, 0);
-        $filename = $content[$key]['filename'];
+        preg_match_all($re, $str, $matches, PREG_SET_ORDER, 0);       
         if ($matches) {
             foreach ($matches as $match) {
                 $totalPassed++;
                 $userData = $match[0];
 
                 $data = preg_replace('/\[/i', '', $userData);
-
-                $data = preg_replace('/\]/i', '', $data);
+                $trimData = explode(".",trim($data));
+                $data = preg_replace('/\]/i', '', $trimData[0]);
 
                 $fullname = $match['first'] . ' ' . $match['last'];
 
@@ -93,17 +93,38 @@ foreach ($content as $key => $data) {
             $userMessage = preg_replace('/\[/', '', $userMessage);
             $userMessage = preg_replace('/\]/', '', $userMessage);
             $messages[] = ['id' => 'Poorly Formated File', 'message' => $userMessage, 'pass' => false, "filename" => $filename];
+            $members[] = [
+                    'output' => $data,
+                    'id' => stripbrackets($match['id']), 
+                    'firstname' => stripbrackets($match['first']), 
+                    'lastname' => stripbrackets($match['last']), 
+                    'email' => $email, 
+                    'language' => stripbrackets($match['language']), 
+                    'filename' => $filename, 
+                    'status' => 'Fail'
+                ];
         }
     } else {
         $failed = "You did not provide a valid email address. Your String must return an email";
         $messages[] = ['id' => 'No Email Returned', 'message' => $failed, 'pass' => false, 'filename' => $filename];
+        $members[] = [
+                    'output' => $data,
+                    'id' => 'Invalid', 
+                    'firstname' => 'Invalid', 
+                    'lastname' => 'Invalid', 
+                    'email' => $email, 
+                    'language' => 'Invalid', 
+                    'filename' => $filename, 
+                    'status' => 'Fail'
+                ];
     }
 }
 
 if ($_SERVER['QUERY_STRING'] === 'json') {
-    if(ob_get_level()) ob_start();
-    $members = json_encode($members);
     header('Content-Type: application/json');
+    if(ob_get_level()) ob_start();
+
+    $members = json_encode($members);    
     echo $members;
     ob_flush();
     flush();
