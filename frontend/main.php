@@ -34,7 +34,7 @@
 
                     <tr>
                         <td><?=$output['id']?></td>
-                        <td><?=$output['errors']?></td>
+                        <td><?=$output['filename']?></td>
                         <td><?=$output['message']?></td>
                         <td>
                             <div class='fail'>Fail</div>
