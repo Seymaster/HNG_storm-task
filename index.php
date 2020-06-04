@@ -61,8 +61,8 @@ foreach ($content as $key => $data) {
             $useroutput = $matches[0];
             $totalPassed++;
             $fullname = $matches[1] . ' ' . $matches[2];
-            $messages[] = ['id' => $matches[4], 'message' => $matches[0], 'name' => $fullname, 'pass' => true, 'filename' => $filename];
-            $members[] = ['id' => $matches[4], 'firstname' => $matches[1], 'lastname' => $matches[2], 'email' => $matches[4], 'language' => $matches[5], 'filename' => $filename, 'output' => $useroutput, 'status'=>'Pass'];
+            $messages[] = ['id' => $matches[3], 'message' => $matches[0], 'name' => $fullname, 'pass' => true, 'filename' => $filename];
+            $members[] = ['id' => $matches[3], 'firstname' => $matches[1], 'lastname' => $matches[2], 'email' => $matches[4], 'language' => $matches[5], 'filename' => $filename, 'output' => $useroutput, 'status'=>'Pass'];
         } else {
             $useroutput = $str;
             $messages[] = ['id' => 'Poorly Formated File', 'message' => $userMessage, 'pass' => false, "filename" => $filename];
