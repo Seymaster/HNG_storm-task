@@ -323,6 +323,7 @@ $total = count($members);
         background-color: #FF6565;
         color: white;
         padding: 4px;
+        margin: auto;
         width: 80%;
     }
 
