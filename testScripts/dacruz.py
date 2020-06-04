@@ -1,5 +1,5 @@
 def record(d,a,c,r,u,z=None):
-    print(f'Hello World, this is [{d}] [{a}] with HNGi7 ID [{r}] using [{c}] for stage 2 task. {u}')
+    print('Hello World, this is [{0}] [{1}] with HNGi7 ID [{3}] using [{2}] for stage 2 task. {4}'.format(d,a,c,r,u,z))
 
 d = 'Chijioke'
 a = 'Ikechukwu'
