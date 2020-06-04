@@ -6,9 +6,9 @@ $files = scandir($folder);
 $cacheFile = '.cache.json';
 /*
 Cache Modes
-cache-only - uses only values in cache
-cache-file - uses file if no cache
-cache-if-unchanged - uses cache if file has not changed
+cache-only - Uses only values in cache
+cache-file - Uses the file if there is no cache
+cache-if-unchanged - Uses cache iff file has not changed
 */
 define("NO_CACHE",0);
 define("CACHE_ONLY",1);
@@ -69,7 +69,9 @@ foreach ($scripts as $key => $script) {
             $cache[$script['name']]=$result;
         }
     }
-    $content[]=$result;
+    if($result){
+        $content[]=$result;
+        }
 }
 if($cacheMode> CACHE_ONLY){
     file_put_contents($cacheFile,json_encode($cache));
