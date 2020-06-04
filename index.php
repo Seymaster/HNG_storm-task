@@ -115,52 +115,52 @@ $total = count($members);
     <title>Team storm</title>
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
     <style>
-        table,
-        .container {
-            margin: 20px auto;
-            max-width: 1000px;
-        }
+    table,
+    .container {
+        margin: 20px auto;
+        max-width: 1000px;
+    }
 
-        .stat {
-            color: white;
-        }
+    .stat {
+        color: white;
+    }
 
-        .team-name {
-            font-size: 1.6rem;
-            margin-bottom: 10px;
-        }
+    .team-name {
+        font-size: 1.6rem;
+        margin-bottom: 10px;
+    }
 
-        .leaders {
-            display: flex;
-            justify-content: space-between;
-        }
+    .leaders {
+        display: flex;
+        justify-content: space-between;
+    }
 
-        .leaders li a {
-            text-decoration: underline;
-        }
+    .leaders li a {
+        text-decoration: underline;
+    }
 
-        body {
-            font-weight: bold;
-            padding: 1em;
-        }
+    body {
+        font-weight: bold;
+        padding: 1em;
+    }
 
-        .stat {
-            display: flex;
-            justify-content: space-between;
-        }
+    .stat {
+        display: flex;
+        justify-content: space-between;
+    }
 
-        thead {
-            color: #fff;
-        }
+    thead {
+        color: #fff;
+    }
 
-        tbody {
-            text-align: center;
-            color: #fff;
-        }
+    tbody {
+        text-align: center;
+        color: #fff;
+    }
 
-        table {
-            margin-top: 100px;
-        }
+    table {
+        margin-top: 100px;
+    }
     </style>
 </head>
 
@@ -206,30 +206,30 @@ $total = count($members);
             <!-- use bg-green-500 class for passed -->
             <?php foreach ($messages as $output): ?>
 
-                <?php if ($output['pass'] === true): ?>
+            <?php if ($output['pass'] === true): ?>
 
-                    <tr class="bg-green-500">
-                        <td class="border px-4 py-2"><?=$output['id']?></td>
-                        <td class="border px-4 py-2"><?=$output['name']?></td>
-                        <td class="border px-4 py-2"><?=$output['message']?></td>
-                        <td class="border px-4 py-2">Passed</td>
-                    </tr>
-                <?php elseif ($output['pass'] === false): ?>
-                    <tr class="bg-red-500">
-                        <td class="border px-4 py-2"><?=$output['id']?></td>
-                        <td class="border px-4 py-2"><?="Incorrect formatting from " . $output['filename']?></td>
-                        <td class="border px-4 py-2"><?=$output['message']?></td>
-                        <td class="border px-4 py-2">Failed</td>
-                    </tr>
+            <tr class="bg-green-500">
+                <td class="border px-4 py-2"><?=$output['id']?></td>
+                <td class="border px-4 py-2"><?=$output['name']?></td>
+                <td class="border px-4 py-2"><?=$output['message']?></td>
+                <td class="border px-4 py-2">Pass</td>
+            </tr>
+            <?php elseif ($output['pass'] === false): ?>
+            <tr class="bg-red-500">
+                <td class="border px-4 py-2"><?=$output['id']?></td>
+                <td class="border px-4 py-2"><?="Incorrect formatting from " . $output['filename']?></td>
+                <td class="border px-4 py-2"><?=$output['message']?></td>
+                <td class="border px-4 py-2">Fail</td>
+            </tr>
 
-                <?php endif;?>
+            <?php endif;?>
 
 
 
-                <!-- use bg-red-500 class for passed -->
+            <!-- use bg-red-500 class for passed -->
 
         </tbody>
-    <?php endforeach;?>
+        <?php endforeach;?>
     </table>
 </body>
 
