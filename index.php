@@ -1,7 +1,7 @@
 <?php
 
 //Get scripts
-$folder = 'testscripts';
+$folder = 'testScripts';
 $files = scandir($folder);
 
 //Check if the script exists and set its command
@@ -10,7 +10,7 @@ function getScripts($files, $folder)
     $extensions = [
         'js' => 'node',
         'php' => 'php',
-        'py' => 'python',
+        'py' => 'python3',
     ];
 
     foreach ($files as $file) {
@@ -40,6 +40,7 @@ foreach ($scripts as $key => $script) {
 function stripbrackets($data)
 {
     $data = preg_replace('/\[/i', '', $data);
+
     $data = preg_replace('/\]/i', '', $data);
     return $data;
 
@@ -48,41 +49,85 @@ function stripbrackets($data)
 $members = [];
 $messages = [];
 
-// Regex Validation string
-$pattern = '/^Hello World, this is (\[\w+\]) (\[\w+\]) with HNGI7 ID (\[HNG-\d+\]) using (\[\w+\]) for stage 2 task. ([-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+.[a-zA-Z]{2,4})/i';
+$re = '/^Hello World, this is (?<first>\[\w+\])? (?<last>\[\w+\])? with HNGI7 ID (?<id>\[HNG-\d+\])? using (?<language>\[\w+\])? for stage 2 task. /i';
 
 foreach ($content as $key => $data) {
     $output = $content[$key]['output'];
     $str = $output;
-    $userMessage = $output;
-
-    $matcher = preg_match($pattern,$str,$matches);
-        $filename = $content[$key]['filename'];
-        // Check if there is a regex match
+    $email = explode(" ", $str);
+    $email = array_pop($email);
+    $email = trim($email);
+    $filename = $content[$key]['filename'];
+    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        preg_match_all($re, $str, $matches, PREG_SET_ORDER, 0);       
         if ($matches) {
-            $useroutput = $matches[0];
-            $totalPassed++;
-            $fullname = stripbrackets($matches[1]) . ' ' . stripbrackets($matches[2]);
-            $messages[] = ['id' => stripbrackets($matches[3]), 'message' => $matches[0], 'name' => $fullname, 'pass' => true, 'filename' => $filename];
-            $members[] = ['id' => stripbrackets($matches[3]), 'firstname' => stripbrackets($matches[1]), 'lastname' => stripbrackets($matches[2]), 'email' => stripbrackets($matches[5]), 'language' => stripbrackets($matches[4]), 'filename' => $filename, 'output' => $useroutput, 'status'=>'pass'];
+            foreach ($matches as $match) {
+                $totalPassed++;
+                $userData = $match[0];
 
-        }elseif($str == ""){
-            $userMessage = "No message passed, Server could not exec file";
-            $messages[] = ['id' => 'Server cannot exec file', 'message' => $userMessage, 'pass' => false, "filename" => $filename];
-            $members[] = ['id' => 'null', 'firstname' => 'null', 'lastname' => 'null', 'email' => 'null', 'language' => 'null', 'filename' => $filename, 'output' => $userMessage, 'status'=>'fail'];
-            
-        }else{
-            $useroutput = $str;
+                $data = preg_replace('/\[/i', '', $userData);
+                $trimData = explode(".",trim($data));
+                $data = preg_replace('/\]/i', '', $trimData[0]);
+
+                $fullname = $match['first'] . ' ' . $match['last'];
+
+                $fullname = preg_replace('/\[/i', '', $fullname);
+
+                $fullname = preg_replace('/\]/i', '', $fullname);
+
+                $messages[] = ['id' => $match['id'], 'message' => $data, 'name' => $fullname, 'pass' => true, 'filename' => $filename];
+
+                $members[] = [
+                    'output' => $data,
+                    'id' => stripbrackets($match['id']), 
+                    'firstname' => stripbrackets($match['first']), 
+                    'lastname' => stripbrackets($match['last']), 
+                    'email' => $email, 
+                    'language' => stripbrackets($match['language']), 
+                    'filename' => $filename, 
+                    'status' => 'Pass'
+                ];
+            }
+        } else {
+            $userMessage = str_replace($email, '', $output);
+            $userMessage = preg_replace('/\[/', '', $userMessage);
+            $userMessage = preg_replace('/\]/', '', $userMessage);
             $messages[] = ['id' => 'Poorly Formated File', 'message' => $userMessage, 'pass' => false, "filename" => $filename];
-            $members[] = ['id' => 'null', 'firstname' => 'null', 'lastname' => 'null', 'email' => 'null', 'language' => 'null', 'filename' => $filename, 'output' => $useroutput, 'status'=>'fail'];
+            $members[] = [
+                    'output' => $data,
+                    'id' => stripbrackets($match['id']), 
+                    'firstname' => stripbrackets($match['first']), 
+                    'lastname' => stripbrackets($match['last']), 
+                    'email' => $email, 
+                    'language' => stripbrackets($match['language']), 
+                    'filename' => $filename, 
+                    'status' => 'Fail'
+                ];
         }
-
+    } else {
+        $failed = "You did not provide a valid email address. Your String must return an email";
+        $messages[] = ['id' => 'No Email Returned', 'message' => $failed, 'pass' => false, 'filename' => $filename];
+        $members[] = [
+                    'output' => $data,
+                    'id' => 'Invalid', 
+                    'firstname' => 'Invalid', 
+                    'lastname' => 'Invalid', 
+                    'email' => $email, 
+                    'language' => 'Invalid', 
+                    'filename' => $filename, 
+                    'status' => 'Fail'
+                ];
+    }
 }
 
 if ($_SERVER['QUERY_STRING'] === 'json') {
-    $members = json_encode($members);
     header('Content-Type: application/json');
+    if(ob_get_level()) ob_start();
+
+    $members = json_encode($members);    
     echo $members;
+    ob_flush();
+    flush();
     exit;
 }
 
@@ -103,52 +148,52 @@ $total = count($members);
     <title>Team storm</title>
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
     <style>
-        table,
-        .container {
-            margin: 20px auto;
-            max-width: 1000px;
-        }
+    table,
+    .container {
+        margin: 20px auto;
+        max-width: 1000px;
+    }
 
-        .stat {
-            color: white;
-        }
+    .stat {
+        color: white;
+    }
 
-        .team-name {
-            font-size: 1.6rem;
-            margin-bottom: 10px;
-        }
+    .team-name {
+        font-size: 1.6rem;
+        margin-bottom: 10px;
+    }
 
-        .leaders {
-            display: flex;
-            justify-content: space-between;
-        }
+    .leaders {
+        display: flex;
+        justify-content: space-between;
+    }
 
-        .leaders li a {
-            text-decoration: underline;
-        }
+    .leaders li a {
+        text-decoration: underline;
+    }
 
-        body {
-            font-weight: bold;
-            padding: 1em;
-        }
+    body {
+        font-weight: bold;
+        padding: 1em;
+    }
 
-        .stat {
-            display: flex;
-            justify-content: space-between;
-        }
+    .stat {
+        display: flex;
+        justify-content: space-between;
+    }
 
-        thead {
-            color: #fff;
-        }
+    thead {
+        color: #fff;
+    }
 
-        tbody {
-            text-align: center;
-            color: #fff;
-        }
+    tbody {
+        text-align: center;
+        color: #fff;
+    }
 
-        table {
-            margin-top: 100px;
-        }
+    table {
+        margin-top: 100px;
+    }
     </style>
 </head>
 
@@ -192,32 +237,34 @@ $total = count($members);
         </thead>
         <tbody>
             <!-- use bg-green-500 class for passed -->
+            <?php if(ob_get_level()) ob_start(); ?>
             <?php foreach ($messages as $output): ?>
 
-                <?php if ($output['pass'] === true): ?>
+            <?php if ($output['pass'] === true): ?>
 
-                    <tr class="bg-green-500">
-                        <td class="border px-4 py-2"><?=$output['id']?></td>
-                        <td class="border px-4 py-2"><?=$output['name']?></td>
-                        <td class="border px-4 py-2"><?=$output['message']?></td>
-                        <td class="border px-4 py-2">Passed</td>
-                    </tr>
-                <?php elseif ($output['pass'] === false): ?>
-                    <tr class="bg-red-500">
-                        <td class="border px-4 py-2"><?=$output['id']?></td>
-                        <td class="border px-4 py-2"><?="Incorrect formatting from " . $output['filename']?></td>
-                        <td class="border px-4 py-2"><?=$output['message']?></td>
-                        <td class="border px-4 py-2">Failed</td>
-                    </tr>
+            <tr class="bg-green-500">
+                <td class="border px-4 py-2"><?=$output['id']?></td>
+                <td class="border px-4 py-2"><?=$output['name']?></td>
+                <td class="border px-4 py-2"><?=$output['message']?></td>
+                <td class="border px-4 py-2">Pass</td>
+            </tr>
+            <?php elseif ($output['pass'] === false): ?>
+            <tr class="bg-red-500">
+                <td class="border px-4 py-2"><?=$output['id']?></td>
+                <td class="border px-4 py-2"><?="Incorrect formatting from " . $output['filename']?></td>
+                <td class="border px-4 py-2"><?=$output['message']?></td>
+                <td class="border px-4 py-2">Fail</td>
+            </tr>
 
-                <?php endif;?>
+            <?php endif;?>
 
 
 
-                <!-- use bg-red-500 class for passed -->
+            <!-- use bg-red-500 class for passed -->
 
         </tbody>
-    <?php endforeach;?>
+        <?php ob_flush(); flush(); ?>
+        <?php endforeach;?>
     </table>
 </body>
 
