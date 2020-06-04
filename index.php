@@ -9,8 +9,7 @@ function getScripts($files, $folder)
     $extensions = [
         'js' => 'node',
         'php' => 'php',
-        'py' => 'Python',
-        'java' => 'java',
+        'py' => 'python',
     ];
 
     foreach ($files as $file) {
