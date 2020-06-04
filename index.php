@@ -49,10 +49,7 @@ $members = [];
 $messages = [];
 
 // Regex Validation string
-
 $pattern = '/^Hello World, this is (\[\w+\]) (\[\w+\]) with HNGI7 ID (\[HNG-\d+\]) using (\[\w+\]) for stage 2 task. ([-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+.[a-zA-Z]{2,4})/i';
-
-//$pattern = '/^Hello\sWorld[,]*\sthis\sis\s(\w+\s){1,6}(\w+\s){1,6}with\sHNGi7\sID\s(HNG-\d+)\sand\semail\s([-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+.[a-zA-Z]{2,4})\susing\s([a-zA-Z|#]{2,})\sfor\sstage\s2\stask.?$/i';
 
 foreach ($content as $key => $data) {
     $output = $content[$key]['output'];
@@ -61,14 +58,20 @@ foreach ($content as $key => $data) {
 
     $matcher = preg_match($pattern,$str,$matches);
         $filename = $content[$key]['filename'];
-
+        // Check if there is a regex match
         if ($matches) {
             $useroutput = $matches[0];
             $totalPassed++;
             $fullname = stripbrackets($matches[1]) . ' ' . stripbrackets($matches[2]);
-            $messages[] = ['id' => stripbrackets($matches[3]), 'message' => stripbrackets($matches[0]), 'name' => $fullname, 'pass' => true, 'filename' => $filename];
-            $members[] = ['id' => stripbrackets($matches[3]), 'firstname' => stripbrackets($matches[1]), 'lastname' => stripbrackets($matches[2]), 'email' => stripbrackets($matches[5]), 'language' => stripbrackets($matches[4]), 'filename' => $filename, 'output' => $useroutput, 'status'=>'Pass'];
-        } else {
+            $messages[] = ['id' => stripbrackets($matches[3]), 'message' => $matches[0], 'name' => $fullname, 'pass' => true, 'filename' => $filename];
+            $members[] = ['id' => stripbrackets($matches[3]), 'firstname' => stripbrackets($matches[1]), 'lastname' => stripbrackets($matches[2]), 'email' => stripbrackets($matches[5]), 'language' => stripbrackets($matches[4]), 'filename' => $filename, 'output' => $useroutput, 'status'=>'pass'];
+
+        }elseif($str == ""){
+            $userMessage = "No message passed, Server could not exec file";
+            $messages[] = ['id' => 'Server cannot exec file', 'message' => $userMessage, 'pass' => false, "filename" => $filename];
+            $members[] = ['id' => 'null', 'firstname' => 'null', 'lastname' => 'null', 'email' => 'null', 'language' => 'null', 'filename' => $filename, 'output' => $userMessage, 'status'=>'fail'];
+            
+        }else{
             $useroutput = $str;
             $messages[] = ['id' => 'Poorly Formated File', 'message' => $userMessage, 'pass' => false, "filename" => $filename];
             $members[] = ['id' => 'null', 'firstname' => 'null', 'lastname' => 'null', 'email' => 'null', 'language' => 'null', 'filename' => $filename, 'output' => $useroutput, 'status'=>'fail'];

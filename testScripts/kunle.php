@@ -1,5 +1,2 @@
 <?php  
-
-print("Hello World, this is Tobi Babalola with HNGi7 ID HNG-00155 and email tosinbabs@gmail.com using PHP for stage 2 task.");
-
-?>
+print("Hello World, this is [firstName] [lastname] with HNGi7 ID [HNG-0000] using [PHP] for stage 2 task. joshuafolorunsho01@gmail.com");?>

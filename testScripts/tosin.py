@@ -1,4 +1,7 @@
-def hngname():
-    print("Hello World, this is Tosin Babalola with HNGi7 ID HNG-00155 and email tosinbabs@gmail.com using PHP for stage 2 task.")
-
-hngname()
+def details(F,L,I,La,E):
+    print("Hello World, this is",F,L,'with HNGi7 ID',I,'using', La,'for stage 2 task.',E)
+details(F ='[Mercy]',
+    L = '[Godwin]',
+    I = '[HNG-00414]',
+    La = '[python]',
+    E= 'gowinmercy@gmail.com')
