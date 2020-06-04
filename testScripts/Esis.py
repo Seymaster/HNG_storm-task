@@ -1,4 +1,4 @@
-def details(F,L,I,La,E= 'gowinmercy@gmail.com')):
+def details(F,L,I,La,E= 'gowinmercy@gmail.com'):
     return("Hello World, this is",F,L,'with HNGi7 ID',I,'using', La,'for stage 2 task.',E)
 
 print(details(F ='[Mercy]',
