@@ -4,13 +4,13 @@ $firstname = "Paul";
 
 $lastname = "Okwudike";
 
-$Tag = "HNG-U014K7F166P";
+$idtag = "HNG-U014K7F166P";
 
-$Programme = "PHP";
+$pru = "PHP";
 
 $email = "paulamaechiokwudike@gmail.com"
 
-echo "Hello World, this is [firstname] [lastname] with HNGi7 ID [Tag] using [Programme] for stage 2 task. [email]"
+echo "Hello World, this is [firstname] [lastname] with HNGi7 ID [idtag] using [pru] for stage 2 task. [email]"
 
 
 ?>
