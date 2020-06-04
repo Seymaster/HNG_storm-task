@@ -11,7 +11,7 @@ def get_string():
     output = ("Hello World, this is %s with HNGi7 ID %s using %s for stage 2 task. %s" % (
         name, id, language, email))
 
-    return output
+    print(output)
 
 
 get_string()
