@@ -1,6 +1,6 @@
 def output(data):
     # set result
-    result = f"Hello World, this is {data['firstName']} {data['lastName']} with HNGi7 ID {data['id']} using {data['language']} for stage 2 task. {data['email']}"
+    result = f"Hello World, this is [{data['firstName']}] [{data['lastName']}] with HNGi7 ID [{data['id']}] using [{data['language']}] for stage 2 task. {data['email']}"
 
     return result
 data = {}
