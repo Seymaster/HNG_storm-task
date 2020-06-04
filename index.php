@@ -176,13 +176,6 @@ foreach ($content as $key => $data) {
 
 }
 
-// foreach ($messages as $script) {
-//     if (!empty($script['error'])) {
-//         // var_dump($script);
-
-//     }
-// }
-
 if ($_SERVER['QUERY_STRING'] === 'json') {
     $members = json_encode($members);
     header('Content-Type: application/json');
@@ -197,9 +190,8 @@ if (isset($_GET['file'])) {
     exit;
 
 }
+
 $total = count($members);
-// echo $totalPassed;
-// echo $totalScripts;
 
 include 'frontend/output.php';
 exit;
