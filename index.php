@@ -1,4 +1,5 @@
 <?php
+// error_reporting(E_ERROR | E_PARSE);
 
 //Get scripts
 $folder = 'scripts';
@@ -176,6 +177,7 @@ $total = count($members);
         text-transform: uppercase;
         font-size: 1.7rem;
         font-family: 'Roboto', sans-serif;
+        letter-spacing: 0.07em;
     }
 
     .leads-container {
@@ -466,6 +468,7 @@ $total = count($members);
 
                         <?php ob_flush(); flush(); ?>
                         <?php endforeach;?>
+                        <?php ob_end_flush(); ?>
                         <!-- <tr>
                             <td>12334455</td>
                             <td>Adedeji Abiola</td>
