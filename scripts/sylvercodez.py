@@ -1,16 +1,4 @@
+def MY_Details(**datas):
+    print('Hello World, this is '+ datas['FirstName']+ datas['LastName'] +' with HNGi7 ID '+ datas['Id']+' using ' + datas['Language'] + ' for stage 2 task.'+ datas['Email'])
 
-#my function 
-def Details():
-    #a dictionary containing my details.its has a key and a value 
-    objects = {
-        'FirstName':'[OTENAIKE]',
-        'LastName' :'[OLUWATOBI]',
-        'Id' :'[HNG-00465]',
-        'Language':'[python]',
-        'Email' :'tosinotenaike3@gmail.com'
-    }
-    #output of the code
-    print('Hello World, this is ' + objects['FirstName']+objects['LastName'] +' with HNGi7 ID '+ objects['Id'] +' using ' + objects['Language'] + ' for stage 2 task.'+ objects['Email'])
-
-
-Details()
+MY_Details(FirstName ='[OTENAIKE]',LastName = '[OLUWATOBI]',Id ='[HNG-00465]',Language ='[python]',Email ='tosinotenaike3@gmail')
