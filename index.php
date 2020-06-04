@@ -40,7 +40,6 @@ foreach ($scripts as $key => $script) {
 function stripbrackets($data)
 {
     $data = preg_replace('/\[/i', '', $data);
-
     $data = preg_replace('/\]/i', '', $data);
     return $data;
 
@@ -65,6 +64,7 @@ foreach ($content as $key => $data) {
             $messages[] = ['id' => $matches[4], 'message' => $matches[0], 'name' => $fullname, 'pass' => true, 'filename' => $filename];
             $members[] = ['id' => $matches[4], 'firstname' => $matches[1], 'lastname' => $matches[2], 'email' => $matches[4], 'language' => $matches[5], 'filename' => $filename, 'output' => $useroutput, 'status'=>'Pass'];
         } else {
+            $useroutput = $str;
             $messages[] = ['id' => 'Poorly Formated File', 'message' => $userMessage, 'pass' => false, "filename" => $filename];
             $members[] = ['id' => 'null', 'firstname' => 'null', 'lastname' => 'null', 'email' => 'null', 'language' => 'null', 'filename' => $filename, 'output' => $useroutput, 'status'=>'fail'];
         }
