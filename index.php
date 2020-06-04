@@ -1,7 +1,7 @@
 <?php
 
 //Get scripts
-$folder = 'testScripts';
+$folder = 'testscripts';
 $files = scandir($folder);
 
 //Check if the script exists and set its command
@@ -49,46 +49,26 @@ function stripbrackets($data)
 $members = [];
 $messages = [];
 
-$re = '/^Hello World, this is (?<first>\[\w+\])? (?<last>\[\w+\])? with HNGI7 ID (?<id>\[HNG-\d+\])? using (?<language>\[\w+\])? for stage 2 task. /i';
+
+$pattern = '/^Hello\sWorld[,]*\sthis\sis\s(\w+\s){1,6}(\w+\s){1,6}with\sHNGi7\sID\s(HNG-\d{3,})\sand\semail\s([-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+.[a-zA-Z]{2,4})\s{1,3}using\s([a-zA-Z|#]{2,})\sfor\sstage\s2\stask.?$/i';
 
 foreach ($content as $key => $data) {
     $output = $content[$key]['output'];
     $str = $output;
-    $email = explode(" ", $str);
-    $email = array_pop($email);
-    $email = trim($email);
-    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        preg_match_all($re, $str, $matches, PREG_SET_ORDER, 0);
+    $userMessage = $output;
+    $matcher = preg_match($pattern,$str,$matches);
         $filename = $content[$key]['filename'];
         if ($matches) {
-            foreach ($matches as $match) {
-                $totalPassed++;
-                $userData = $match[0];
-
-                $data = preg_replace('/\[/i', '', $userData);
-
-                $data = preg_replace('/\]/i', '', $data);
-
-                $fullname = $match['first'] . ' ' . $match['last'];
-
-                $fullname = preg_replace('/\[/i', '', $fullname);
-
-                $fullname = preg_replace('/\]/i', '', $fullname);
-
-                $messages[] = ['id' => $match['id'], 'message' => $data, 'name' => $fullname, 'pass' => true, 'filename' => $filename];
-
-                $members[] = ['id' => stripbrackets($match['id']), 'firstname' => stripbrackets($match['first']), 'lastname' => stripbrackets($match['last']), 'email' => $email, 'language' => stripbrackets($match['language']), 'filename' => $filename, 'output' => $data];
-            }
+            $useroutput = $matches[0];
+            $totalPassed++;
+            $fullname = $matches[1] . ' ' . $matches[2];
+            $messages[] = ['id' => $matches[4], 'message' => $matches[0], 'name' => $fullname, 'pass' => true, 'filename' => $filename];
+            $members[] = ['id' => $matches[4], 'firstname' => $matches[1], 'lastname' => $matches[2], 'email' => $matches[4], 'language' => $matches[5], 'filename' => $filename, 'output' => $useroutput, 'status'=>'Pass'];
         } else {
-            $userMessage = str_replace($email, '', $output);
-            $userMessage = preg_replace('/\[/', '', $userMessage);
-            $userMessage = preg_replace('/\]/', '', $userMessage);
             $messages[] = ['id' => 'Poorly Formated File', 'message' => $userMessage, 'pass' => false, "filename" => $filename];
+            $members[] = ['id' => 'null', 'firstname' => 'null', 'lastname' => 'null', 'email' => 'null', 'language' => 'null', 'filename' => $filename, 'output' => $useroutput, 'status'=>'fail'];
         }
-    } else {
-        $failed = "You did not provide a valid email address. Your String must return an email";
-        $messages[] = ['id' => 'No Email Returned', 'message' => $failed, 'pass' => false, 'filename' => $filename];
-    }
+
 }
 
 if ($_SERVER['QUERY_STRING'] === 'json') {

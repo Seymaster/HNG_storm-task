@@ -19,7 +19,7 @@ const transformFunction = ({
         id,
         email
     }) =>
-    `Hello World, this is [${firstName}] [${lastName}] with HNGi7 ID [${id}] using [${language}] for stage 2 task. ${email}`;
+    `Hello World, this is ${firstName} ${lastName} with HNGi7 ID ${id} and email ${email} using ${language} for stage 2 task.`;
 
 
 console.log(transformFunction(data));
