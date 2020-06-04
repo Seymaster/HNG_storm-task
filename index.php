@@ -49,20 +49,25 @@ $members = [];
 $messages = [];
 
 // Regex Validation string
-$pattern = '/^Hello\sWorld[,]*\sthis\sis\s(\w+\s){1,6}(\w+\s){1,6}with\sHNGi7\sID\s(HNG-\d+)\sand\semail\s([-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+.[a-zA-Z]{2,4})\susing\s([a-zA-Z|#]{2,})\sfor\sstage\s2\stask.?$/i';
+
+$pattern = '/^Hello World, this is (\[\w+\]) (\[\w+\]) with HNGI7 ID (\[HNG-\d+\]) using (\[\w+\]) for stage 2 task. ([-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+.[a-zA-Z]{2,4})/i';
+
+//$pattern = '/^Hello\sWorld[,]*\sthis\sis\s(\w+\s){1,6}(\w+\s){1,6}with\sHNGi7\sID\s(HNG-\d+)\sand\semail\s([-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+.[a-zA-Z]{2,4})\susing\s([a-zA-Z|#]{2,})\sfor\sstage\s2\stask.?$/i';
 
 foreach ($content as $key => $data) {
     $output = $content[$key]['output'];
     $str = $output;
     $userMessage = $output;
+    print_r($userMessage);
     $matcher = preg_match($pattern,$str,$matches);
         $filename = $content[$key]['filename'];
+        print_r($matches);
         if ($matches) {
             $useroutput = $matches[0];
             $totalPassed++;
-            $fullname = $matches[1] . ' ' . $matches[2];
-            $messages[] = ['id' => $matches[3], 'message' => $matches[0], 'name' => $fullname, 'pass' => true, 'filename' => $filename];
-            $members[] = ['id' => $matches[3], 'firstname' => $matches[1], 'lastname' => $matches[2], 'email' => $matches[4], 'language' => $matches[5], 'filename' => $filename, 'output' => $useroutput, 'status'=>'Pass'];
+            $fullname = stripbrackets($matches[1]) . ' ' . stripbrackets($matches[2]);
+            $messages[] = ['id' => stripbrackets($matches[3]), 'message' => stripbrackets($matches[0]), 'name' => $fullname, 'pass' => true, 'filename' => $filename];
+            $members[] = ['id' => stripbrackets($matches[3]), 'firstname' => stripbrackets($matches[1]), 'lastname' => stripbrackets($matches[2]), 'email' => stripbrackets($matches[5]), 'language' => stripbrackets($matches[4]), 'filename' => $filename, 'output' => $useroutput, 'status'=>'Pass'];
         } else {
             $useroutput = $str;
             $messages[] = ['id' => 'Poorly Formated File', 'message' => $userMessage, 'pass' => false, "filename" => $filename];
