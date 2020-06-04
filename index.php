@@ -77,7 +77,16 @@ foreach ($content as $key => $data) {
 
                 $messages[] = ['id' => $match['id'], 'message' => $data, 'name' => $fullname, 'pass' => true, 'filename' => $filename];
 
-                $members[] = ['id' => stripbrackets($match['id']), 'firstname' => stripbrackets($match['first']), 'lastname' => stripbrackets($match['last']), 'email' => $email, 'language' => stripbrackets($match['language']), 'filename' => $filename, 'output' => $data];
+                $members[] = [
+                    'output' => $data,
+                    'id' => stripbrackets($match['id']), 
+                    'firstname' => stripbrackets($match['first']), 
+                    'lastname' => stripbrackets($match['last']), 
+                    'email' => $email, 
+                    'language' => stripbrackets($match['language']), 
+                    'filename' => $filename, 
+                    'status' => 'Pass'
+                ];
             }
         } else {
             $userMessage = str_replace($email, '', $output);
@@ -92,9 +101,12 @@ foreach ($content as $key => $data) {
 }
 
 if ($_SERVER['QUERY_STRING'] === 'json') {
+    if(ob_get_level()) ob_start();
     $members = json_encode($members);
     header('Content-Type: application/json');
     echo $members;
+    ob_flush();
+    flush();
     exit;
 }
 
@@ -204,6 +216,7 @@ $total = count($members);
         </thead>
         <tbody>
             <!-- use bg-green-500 class for passed -->
+            <?php if(ob_get_level()) ob_start(); ?>
             <?php foreach ($messages as $output): ?>
 
             <?php if ($output['pass'] === true): ?>
@@ -229,6 +242,7 @@ $total = count($members);
             <!-- use bg-red-500 class for passed -->
 
         </tbody>
+        <?php ob_flush(); flush(); ?>
         <?php endforeach;?>
     </table>
 </body>

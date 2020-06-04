@@ -1,8 +1,8 @@
 "use strict";
 
 var myDetails = {
-  firstName: "Sunday",
-  lastName: "Destiny",
+  firstName: "Destiny",
+  lastName: "Sunday",
   language: "JavaScript",
   HngId: "HNG-01091",
   email: "destinyjuniorsdj@gmail.com",
