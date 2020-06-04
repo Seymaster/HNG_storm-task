@@ -272,11 +272,11 @@
                     <p>Total Submissions</p>
                     <p><?=$totalScripts?></p>
                 </div>
-                <div onclick="window.location='?passed=true'"class='card-two'>
+                <div style="cursor:pointer" onclick="window.location='?passed=true'"class='card-two'>
                     <p>Total Passed</p>
                     <p><?=$totalPassed?></p>
                 </div>
-                <div onclick="window.location='?failed=true'" class='card-three'>
+                <div style="cursor:pointer" onclick="window.location='?failed=true'" class='card-three'>
                     <p>Failed</p>
                     <p><?=$totalScripts - $totalPassed?></p>
                 </div>

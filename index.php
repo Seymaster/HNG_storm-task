@@ -1,5 +1,5 @@
 <?php
-require 'frontend/topcache.php';
+
 //Get scripts
 $folder = 'scripts';
 $files = scandir($folder);
@@ -63,7 +63,7 @@ $messages = [];
 $re = '/^Hello World, this is (?<first>\[\w+\])? (?<last>\[\w+\])? with HNGI7 ID (?<id>\[HNG-\d+\])? using (?<language>\[\w+\])? for stage 2 task. /i';
 
 foreach ($content as $key => $data) {
-    $output = $content[$key]['output'];
+    $output = trim($content[$key]['output']);
     $str = $output;
     $email = explode(" ", $str);
     $email = array_pop($email);
@@ -126,7 +126,7 @@ foreach ($content as $key => $data) {
             ];
         }
     } else {
-        $output = $userMessage ?? $fileID . ' failed: Script did not return an output';
+        $output = $u ?? $fileID . ' failed: Script did not return an output';
         $failed = "Wrong Output";
         $messages[$fileID] = ['id' => $fileID, 'message' => $output, 'pass' => false, 'filename' => $filename, 'errors' => $failed];
         $members[$fileID] = [
@@ -183,14 +183,9 @@ if (isset($_GET['failed']) && $_GET['failed'] === 'true') {
             $failed[] = $output;
         }
     }
-    if (ob_get_level()) {
-        ob_start();
-    }
 
     $failed = json_encode($failed);
     echo $failed;
-    ob_flush();
-    flush();
     exit;
 
 }
@@ -203,4 +198,4 @@ $total = count($members);
 
 include 'frontend/main.php';
 
-require 'frontend/bottomcache.php';
+

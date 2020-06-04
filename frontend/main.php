@@ -1,3 +1,4 @@
+<?php require 'topcache.php';?>
 <?php require 'header.php'?>
 <div class='table-container'>
     <table>
@@ -80,3 +81,5 @@
     </table>
 </div>
 <?php require 'footer.php'?>
+
+<?php require 'bottomcache.php';?>
