@@ -1,4 +1,6 @@
 <?php
+// error_reporting(E_ERROR | E_PARSE);
+
 //Get scripts
 $folder = 'scripts';
 $files = scandir($folder);
@@ -91,7 +93,7 @@ foreach ($content as $key => $data) {
             $userMessage = str_replace($email, '', $output);
             $userMessage = preg_replace('/\[/', '', $userMessage);
             $userMessage = preg_replace('/\]/', '', $userMessage);
-            $messages[] = ['id' => 'Poorly Formated File', 'message' => $userMessage, 'pass' => false, "filename" => $filename];
+            // $messages[] = ['id' => 'Poorly Formated File', 'message' => $userMessage, 'pass' => false, "filename" => $filename];
             $members[] = [
                     'output' => $data,
                     'id' => stripbrackets($match['id']), 
@@ -104,8 +106,8 @@ foreach ($content as $key => $data) {
                 ];
         }
     } else {
-        $failed = "You did not provide a valid email address. Your String must return an email";
-        $messages[] = ['id' => 'No Email Returned', 'message' => $failed, 'pass' => false, 'filename' => $filename];
+        // $failed = "You did not provide a valid email address. Your String must return an email";
+        // $messages[] = ['id' => 'No Email Returned', 'message' => $failed, 'pass' => false, 'filename' => $filename];
         $members[] = [
                     'output' => $data,
                     'id' => 'Invalid', 
