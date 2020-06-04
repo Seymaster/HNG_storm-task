@@ -1,6 +1,6 @@
 function sentence(firstname,lastname, id,language,email){
 
-  return `Hello World, this is ${firstname} ${lastname} with HNGi7 ID ${id} using ${language} for stage 2 task ${email}`
+  return `Hello World, this is ${firstname} ${lastname} with HNGi7 ID ${id} using ${language} for stage 2 task. ${email}`
 
 }
 
