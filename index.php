@@ -49,8 +49,8 @@ function stripbrackets($data)
 $members = [];
 $messages = [];
 
-
-$pattern = '/^Hello\sWorld[,]*\sthis\sis\s(\w+\s){1,6}(\w+\s){1,6}with\sHNGi7\sID\s(HNG-\d{3,})\sand\semail\s([-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+.[a-zA-Z]{2,4})\s{1,3}using\s([a-zA-Z|#]{2,})\sfor\sstage\s2\stask.?$/i';
+// Regex Validation string
+$pattern = '/^Hello\sWorld[,]*\sthis\sis\s(\w+\s){1,6}(\w+\s){1,6}with\sHNGi7\sID\s(HNG-\d+)\sand\semail\s([-0-9a-zA-Z.+_]+@[-0-9a-zA-Z.+_]+.[a-zA-Z]{2,4})\susing\s([a-zA-Z|#]{2,})\sfor\sstage\s2\stask.?$/i';
 
 foreach ($content as $key => $data) {
     $output = $content[$key]['output'];
