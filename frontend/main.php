@@ -37,7 +37,7 @@
                         <td><?=$output['errors']?></td>
                         <td><?=$output['message']?></td>
                         <td>
-                            <div class='fail'>Pass</div>
+                            <div class='fail'>Fail</div>
                         </td>
                     </tr>
 
