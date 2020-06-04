@@ -1,8 +1,13 @@
 "use strict";
 
 var myDetails = {
+<<<<<<< HEAD
   firstName: "Sunday",
   lastName: "Destiny",
+=======
+  firstName: "Destiny",
+  lastName: "Sunday",
+>>>>>>> 29e98cec1cf19b05e558b068833ad301e1104aab
   language: "JavaScript",
   HngId: "HNG-01091",
   email: "destinyjuniorsdj@gmail.com",

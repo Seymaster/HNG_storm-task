@@ -10,7 +10,7 @@ function getScripts($files, $folder)
     $extensions = [
         'js' => 'node',
         'php' => 'php',
-        'py' => 'python',
+        'py' => 'python3',
     ];
 
     foreach ($files as $file) {
@@ -57,17 +57,17 @@ foreach ($content as $key => $data) {
     $email = explode(" ", $str);
     $email = array_pop($email);
     $email = trim($email);
+    $filename = $content[$key]['filename'];
     if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        preg_match_all($re, $str, $matches, PREG_SET_ORDER, 0);
-        $filename = $content[$key]['filename'];
+        preg_match_all($re, $str, $matches, PREG_SET_ORDER, 0);       
         if ($matches) {
             foreach ($matches as $match) {
                 $totalPassed++;
                 $userData = $match[0];
 
                 $data = preg_replace('/\[/i', '', $userData);
-
-                $data = preg_replace('/\]/i', '', $data);
+                $trimData = explode(".",trim($data));
+                $data = preg_replace('/\]/i', '', $trimData[0]);
 
                 $fullname = $match['first'] . ' ' . $match['last'];
 
@@ -77,24 +77,57 @@ foreach ($content as $key => $data) {
 
                 $messages[] = ['id' => $match['id'], 'message' => $data, 'name' => $fullname, 'pass' => true, 'filename' => $filename];
 
-                $members[] = ['id' => stripbrackets($match['id']), 'firstname' => stripbrackets($match['first']), 'lastname' => stripbrackets($match['last']), 'email' => $email, 'language' => stripbrackets($match['language']), 'filename' => $filename, 'output' => $data];
+                $members[] = [
+                    'output' => $data,
+                    'id' => stripbrackets($match['id']), 
+                    'firstname' => stripbrackets($match['first']), 
+                    'lastname' => stripbrackets($match['last']), 
+                    'email' => $email, 
+                    'language' => stripbrackets($match['language']), 
+                    'filename' => $filename, 
+                    'status' => 'Pass'
+                ];
             }
         } else {
             $userMessage = str_replace($email, '', $output);
             $userMessage = preg_replace('/\[/', '', $userMessage);
             $userMessage = preg_replace('/\]/', '', $userMessage);
             $messages[] = ['id' => 'Poorly Formated File', 'message' => $userMessage, 'pass' => false, "filename" => $filename];
+            $members[] = [
+                    'output' => $data,
+                    'id' => stripbrackets($match['id']), 
+                    'firstname' => stripbrackets($match['first']), 
+                    'lastname' => stripbrackets($match['last']), 
+                    'email' => $email, 
+                    'language' => stripbrackets($match['language']), 
+                    'filename' => $filename, 
+                    'status' => 'Fail'
+                ];
         }
     } else {
         $failed = "You did not provide a valid email address. Your String must return an email";
         $messages[] = ['id' => 'No Email Returned', 'message' => $failed, 'pass' => false, 'filename' => $filename];
+        $members[] = [
+                    'output' => $data,
+                    'id' => 'Invalid', 
+                    'firstname' => 'Invalid', 
+                    'lastname' => 'Invalid', 
+                    'email' => $email, 
+                    'language' => 'Invalid', 
+                    'filename' => $filename, 
+                    'status' => 'Fail'
+                ];
     }
 }
 
 if ($_SERVER['QUERY_STRING'] === 'json') {
-    $members = json_encode($members);
     header('Content-Type: application/json');
+    if(ob_get_level()) ob_start();
+
+    $members = json_encode($members);    
     echo $members;
+    ob_flush();
+    flush();
     exit;
 }
 
@@ -204,6 +237,7 @@ $total = count($members);
         </thead>
         <tbody>
             <!-- use bg-green-500 class for passed -->
+            <?php if(ob_get_level()) ob_start(); ?>
             <?php foreach ($messages as $output): ?>
 
             <?php if ($output['pass'] === true): ?>
@@ -229,6 +263,10 @@ $total = count($members);
             <!-- use bg-red-500 class for passed -->
 
         </tbody>
+<<<<<<< HEAD
+=======
+        <?php ob_flush(); flush(); ?>
+>>>>>>> 29e98cec1cf19b05e558b068833ad301e1104aab
         <?php endforeach;?>
     </table>
 </body>
