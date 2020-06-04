@@ -96,7 +96,7 @@ foreach ($content as $key => $data) {
 
                 $messages[$fileID] = ['id' => $match['id'], 'message' => $data, 'name' => $fullname, 'pass' => true, 'filename' => $filename];
 
-                $members[$fileID] = [
+                $members[] = [
                     'output' => $data,
                     'id' => stripbrackets($match['id']),
                     'firstname' => stripbrackets($match['first']),
@@ -111,7 +111,7 @@ foreach ($content as $key => $data) {
             $userMessage = str_replace($email, '', $output);
             $userMessage = preg_replace('/\[/', '', $userMessage);
             $userMessage = preg_replace('/\]/', '', $userMessage);
-            $messages[$fileID] = ['id' => $fileID, 'message' => $userMessage, 'pass' => false, "filename" => $filename, 'errors' => $fileID . ' failed eith invalid email.',
+            $messages[] = ['id' => $fileID, 'message' => $userMessage, 'pass' => false, "filename" => $filename, 'errors' => $fileID . ' failed eith invalid email.',
             ];
 
             $members[] = [
@@ -129,7 +129,7 @@ foreach ($content as $key => $data) {
         $output = $u ?? $fileID . ' failed: Script did not return an output';
         $failed = "Wrong Output";
         $messages[$fileID] = ['id' => $fileID, 'message' => $output, 'pass' => false, 'filename' => $filename, 'errors' => $failed];
-        $members[$fileID] = [
+        $members[] = [
             'output' => $data,
             'id' => 'Invalid',
             'firstname' => 'Invalid',
