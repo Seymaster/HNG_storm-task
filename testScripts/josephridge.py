@@ -14,11 +14,11 @@ json_parse = json.dumps(my_data)
 
 
 for i in my_data:
-    f_name = my_data['firstname']
-    l_name = my_data['lastname']
-    my_id = my_data['id']
-    lang = my_data['language']
-    my_email = my_data['email']
+    f_name = my_data["firstname"]
+    l_name = my_data["lastname"]
+    my_id = my_data["id"]
+    lang = my_data["language"]
+    my_email = my_data["email"]
 
 # print("**********************************************")
 print("Hello World, this is [%s] [%s] with HNGi7 ID [%s] using [%s] for stage 2 task. %s" % (
