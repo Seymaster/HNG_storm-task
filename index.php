@@ -94,7 +94,7 @@ foreach ($content as $key => $data) {
 
                 $fullname = preg_replace('/\]/i', '', $fullname);
 
-                $messages[$fileID] = ['id' => $match['id'], 'message' => $data, 'name' => $fullname, 'pass' => true, 'filename' => $filename];
+                $messages[$fileID] = ['id' => stripbrackets($match['id']), 'message' => $data, 'name' => $fullname, 'pass' => true, 'filename' => $filename];
 
                 $members[] = [
                     'output' => $data,
