@@ -1,0 +1,1864 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
+    <title>HNGi7 | Team Storm</title>
+    <style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        color: #707070;
+        font-family: sans-serif;
+    }
+
+    header {
+        width: 100vw;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        padding-top: 50px;
+        margin-bottom: 30px;
+    }
+
+    h1 {
+        width: 350px;
+        text-align: center;
+        color: #6FE3FF;
+        text-transform: uppercase;
+        font-size: 1.7rem;
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .leads-container {
+        padding: 0 20%;
+        width: 100%;
+        /* background-color: aqua; */
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .leads-container div p:nth-of-type(1) {
+        font-weight: 900;
+        margin-bottom: 5px;
+    }
+
+    .leads-container div p:nth-of-type(2) {
+        font-weight: lighter;
+    }
+
+    .flex {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .list-color {
+        height: 20px;
+        width: 20px;
+        background-color: #6FE3FF;
+        margin-right: 10px;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: 250px 1fr;
+        grid-template-rows: auto;
+        grid-template-areas: 'aside main';
+    }
+
+    aside {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 100px;
+    }
+
+    aside h3 {
+        font-size: 1.6rem;
+        margin-bottom: 40px;
+    }
+
+    aside button {
+        background-color: #6FE3FF;
+        margin-bottom: 40px;
+        border: none;
+        outline: none;
+        padding: 10px 40px;
+        color: white;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    section {
+        padding: 30px;
+        background-color: #F5F5F5;
+    }
+
+    .graphics-cards-container {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+    }
+
+    .graphics-cards-container div {
+        flex-grow: 1;
+        height: 120px;
+        margin: 10px;
+        border-radius: 10px;
+        padding: 20px;
+        color: white;
+        padding-top: 30px;
+    }
+
+    .graphics-cards-container div p {
+        margin-bottom: 14px;
+
+    }
+
+    .graphics-cards-container div p:nth-of-type(2) {
+        font-size: 2rem;
+        font-weight: lighter;
+    }
+
+    .card-one {
+        background-color: #6FE3FF;
+    }
+
+    .card-two {
+        background-color: #51B25C;
+    }
+
+    .card-three {
+        background-color: #FF6565;
+    }
+
+    .table--container {
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        /* min-width: 600px; */
+        background-color: white;
+        border-radius: 10px;
+        text-align: left;
+        padding: 20px 40px;
+        /* overflow-x: auto; */
+    }
+
+
+    table th,
+    table td {
+        height: 50px;
+        vertical-align: middle;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+        padding: 20px 0;
+    }
+
+
+
+    .pass {
+        background-color: #51B25C;
+        color: white;
+        padding: 4px;
+        margin: auto;
+        width: 85%;
+    }
+
+    .fail {
+        background-color: #FF6565;
+        color: white;
+        padding: 4px;
+        width: 80%;
+    }
+
+    @media (max-width: 1000px) {
+        .grid-container {
+            grid-template-columns: 200px 1fr;
+        }
+
+        section {
+            padding: 20px;
+        }
+
+        h1 {
+            width: 200px;
+            font-size: 1.5rem
+        }
+    }
+
+    @media (max-width: 786px) {
+        .grid-container {
+            display: block;
+        }
+
+        aside {
+            padding: 20px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            /* padding-top: 100px; */
+        }
+
+        aside h3 {
+            margin-right: 30px;
+        }
+
+        .leads-container {
+            padding: 0 10%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+
+    @media (max-width: 400px) {
+        header {
+            display: block;
+            padding-top: 10px;
+        }
+
+        h1 {
+            display: block;
+            width: 100%;
+            padding-bottom: 20px;
+        }
+
+        table {
+            overflow: auto;
+        }
+    }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Team Storm</h1>
+        <div class='leads-container'>
+            <div>
+                <p>@Esi</p>
+                <p>Team Lead</p>
+            </div>
+            <div>
+                <p>@__josh__</p>
+                <p>Frontend Lead</p>
+            </div>
+            <div>
+                <p>Aj</p>
+                <p>DevOps</p>
+            </div>
+        </div>
+    </header>
+    <main class='grid-container'>
+        <aside>
+            <h3>Team List</h3>
+            <button onclick="window.location='?json'">View Json List</button>
+        </aside>
+        <section>
+            <div class='graphics-cards-container'>
+                <div class='card-one'>
+                    <p>Total Submissions</p>
+                    <p>127</p>
+                </div>
+                <div onclick="window.location='?passed=true'"class='card-two'>
+                    <p>Total Passed</p>
+                    <p>99</p>
+                </div>
+                <div onclick="window.location='?failed=true'" class='card-three'>
+                    <p>Failed</p>
+                    <p>28</p>
+                </div>
+            </div><div class='table-container'>
+    <table>
+        <thead>
+            <tr>
+                <th>HNGID</th>
+                <th>Name</th>
+                <!-- <th>Email</th> -->
+                <th>Message</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- use bg-green-500 class for passed -->
+
+            
+
+                
+                    <tr>
+                        <td>Abby</td>
+                        <td>scripts/Abby.js</td>
+                        <td>Abby failed: Script did not return an output</td>
+                        <td>
+                            <div class='fail'>Fail</div>
+                        </td>
+                    </tr>
+
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-02336]</td>
+                        <td>Adedigba Adedotun</td>
+                        <td>Hello World, this is Adedigba Adedotun with HNGi7 ID HNG-02336 using Javascript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-05357]</td>
+                        <td>Ezekiel Owumi</td>
+                        <td>Hello World, this is Ezekiel Owumi with HNGi7 ID HNG-05357 using Javascript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-04260]</td>
+                        <td>Kehinde Ajibola</td>
+                        <td>Hello World, this is Kehinde Ajibola with HNGi7 ID HNG-04260 using Python for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+                    <tr>
+                        <td>Akan</td>
+                        <td>scripts/Akan.js</td>
+                        <td>Akan failed: Script did not return an output</td>
+                        <td>
+                            <div class='fail'>Fail</div>
+                        </td>
+                    </tr>
+
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-00265]</td>
+                        <td>Hassan Teslim</td>
+                        <td>Hello world, this is Hassan Teslim with HNGi7 ID HNG-00265 using JavaScript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-05517]</td>
+                        <td>Oluwatobi Ogunwole</td>
+                        <td>Hello World, this is Oluwatobi Ogunwole with HNGi7 ID HNG-05517 using Javascript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-02418]</td>
+                        <td>Bockarie Lahai</td>
+                        <td>Hello World, this is Bockarie Lahai with HNGi7 ID HNG-02418 using Python for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-01159]</td>
+                        <td>Brenda Natunga</td>
+                        <td>Hello World, this is Brenda Natunga with HNGi7 ID HNG-01159 using Javascript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+                    <tr>
+                        <td>Brian_orinah</td>
+                        <td>scripts/Brian_orinah.py</td>
+                        <td>Hello World, BrianOrina with HNG-0000 using Python for stage 2 task. </td>
+                        <td>
+                            <div class='fail'>Fail</div>
+                        </td>
+                    </tr>
+
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-00380]</td>
+                        <td>Caleb Agbeniga</td>
+                        <td>Hello World, this is Caleb Agbeniga with HNGi7 ID HNG-00380 using Python for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-02922]</td>
+                        <td>Charles Okafor</td>
+                        <td>Hello World, this is Charles Okafor with HNGi7 ID HNG-02922 using JavaScript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-02260]</td>
+                        <td>Chukwuma Onuh</td>
+                        <td>Hello World, this is Chukwuma Onuh with HNGi7 ID HNG-02260 using Python for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-01091]</td>
+                        <td>Sunday Destiny</td>
+                        <td>Hello World, this is Sunday Destiny with HNGi7 ID HNG-01091 using JavaScript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+                    <tr>
+                        <td>Eben3</td>
+                        <td>scripts/Eben3.py</td>
+                        <td>Hello World, this is Owologba Ebenezar with HNGi7 ID HNG-02690 using Python for stage 2 task. </td>
+                        <td>
+                            <div class='fail'>Fail</div>
+                        </td>
+                    </tr>
+
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-02164]</td>
+                        <td>Osemene Stephen</td>
+                        <td>Hello World, this is Osemene Stephen with HNGi7 ID HNG-02164 using JavaScript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-00414]</td>
+                        <td>Mercy Godwin</td>
+                        <td>Hello World, this is Mercy Godwin with HNGi7 ID HNG-00414 using python for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-01146]</td>
+                        <td>Folahanmi Kolawole</td>
+                        <td>Hello World, this is Folahanmi Kolawole with HNGi7 ID HNG-01146 using Javascript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+                    <tr>
+                        <td>Hafizaaah</td>
+                        <td>scripts/Hafizaaah.js</td>
+                        <td>Hello World, this is Owologba Ebenezar with HNGi7 ID HNG-02690 using Python for stage 2 task. </td>
+                        <td>
+                            <div class='fail'>Fail</div>
+                        </td>
+                    </tr>
+
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-01252]</td>
+                        <td>Alozie Ihuoma</td>
+                        <td>Hello World, this is Alozie Ihuoma with HNGi7 ID HNG-01252 using PHP for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-06346]</td>
+                        <td>Jack Ojee</td>
+                        <td>Hello World, this is Jack Ojee with HNGi7 ID HNG-06346 using python for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-01366]</td>
+                        <td>Nwaigwe Uzoamaka</td>
+                        <td>Hello World, this is Nwaigwe Uzoamaka with HNGi7 ID HNG-01366 using Python for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-03330]</td>
+                        <td>Karen Ngugi</td>
+                        <td>Hello World, this is Karen Ngugi with HNGi7 ID HNG-03330 using Python for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+                    <tr>
+                        <td>KodinNYoung</td>
+                        <td>scripts/KodinNYoung.js</td>
+                        <td>Hello World, this is Owologba Ebenezar with HNGi7 ID HNG-02690 using Python for stage 2 task. </td>
+                        <td>
+                            <div class='fail'>Fail</div>
+                        </td>
+                    </tr>
+
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-04049]</td>
+                        <td>Ayodeji Adeoti</td>
+                        <td>Hello World, this is Ayodeji Adeoti with HNGi7 ID HNG-04049 using Python for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-03991]</td>
+                        <td>Mohamud Rashid</td>
+                        <td>Hello world, this is Mohamud Rashid with HNGi7 ID HNG-03991 using python for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-05948]</td>
+                        <td>Yahaya Suleiman</td>
+                        <td>Hello World, this is Yahaya Suleiman with HNGi7 ID HNG-05948 using Python for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+                    <tr>
+                        <td>Oludoyin</td>
+                        <td>scripts/Oludoyin.js</td>
+                        <td>Hello World, this is Adenuga Oludoyin with HNGi7 ID HNG-01248 using Javascript for stage 2 task. </td>
+                        <td>
+                            <div class='fail'>Fail</div>
+                        </td>
+                    </tr>
+
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-01352]</td>
+                        <td>Oluseye Obisesan</td>
+                        <td>Hello World, this is Oluseye Obisesan with HNGi7 ID HNG-01352 using javascript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-01392]</td>
+                        <td>Oluwanifemi Bamgbose</td>
+                        <td>Hello World, this is Oluwanifemi Bamgbose with HNGi7 ID HNG-01392 using PHP for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+                    <tr>
+                        <td>Oluwatobi-Anointing</td>
+                        <td>scripts/Oluwatobi-Anointing.py</td>
+                        <td>Hello World, this is Oluwatobi Adeyokunnu with HNGi7 ID HNG-02004 using python for stage 2 task. </td>
+                        <td>
+                            <div class='fail'>Fail</div>
+                        </td>
+                    </tr>
+
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-00098]</td>
+                        <td>Onyekachi Okoye</td>
+                        <td>Hello World, this is Onyekachi Okoye with HNGi7 ID HNG-00098 using Javascript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+                    <tr>
+                        <td>Oreva</td>
+                        <td>scripts/Oreva.js</td>
+                        <td>Hello World, this is Oreva Eniworo with HNGi7 IDHNG-05131 using JavaScript for stage 2 task. </td>
+                        <td>
+                            <div class='fail'>Fail</div>
+                        </td>
+                    </tr>
+
+                            
+
+                
+                    <tr>
+                        <td>PaulO-1</td>
+                        <td>scripts/PaulO-1.php</td>
+                        <td>Hello World, this is Oreva Eniworo with HNGi7 IDHNG-05131 using JavaScript for stage 2 task. </td>
+                        <td>
+                            <div class='fail'>Fail</div>
+                        </td>
+                    </tr>
+
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-01748]</td>
+                        <td>KerenHappuch Achoja</td>
+                        <td>Hello World, this is KerenHappuch Achoja with HNGi7 ID HNG-01748 using Python for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+                    <tr>
+                        <td>Rihsabmohd</td>
+                        <td>scripts/Rihsabmohd.js</td>
+                        <td>Hello World, this is Mohammed Bashir Oladimeji with HNGi7  ID HNG-02012 using Javascript for stage 2 task. </td>
+                        <td>
+                            <div class='fail'>Fail</div>
+                        </td>
+                    </tr>
+
+                            
+
+                
+                    <tr>
+                        <td>Rishika</td>
+                        <td>scripts/Rishika.py</td>
+                        <td>Hello World, this is Rishika Roychoudhury with HNGi7 ID HNG-01831 using Python for stage 2 task. </td>
+                        <td>
+                            <div class='fail'>Fail</div>
+                        </td>
+                    </tr>
+
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-05120]</td>
+                        <td>Ajayi Sodiq</td>
+                        <td>Hello world, this is Ajayi Sodiq with HNGi7 ID HNG-05120 using Python for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-00714]</td>
+                        <td>Esther Ndavi</td>
+                        <td>Hello World, this is Esther Ndavi with HNGi7 ID HNG-00714 using JavaScript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-00727]</td>
+                        <td>Kayode Samson</td>
+                        <td>Hello World, this is Kayode Samson with HNGi7 ID HNG-00727 using Python for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-03199]</td>
+                        <td>Oluwasanmi Awelewa</td>
+                        <td>Hello World, this is Oluwasanmi Awelewa with HNGi7 ID HNG-03199 using python for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-01167]</td>
+                        <td>Shlok Garg</td>
+                        <td>Hello World, this is Shlok Garg with HNGi7 ID HNG-01167 using Javascript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-05492]</td>
+                        <td>Uwaoma Ogude</td>
+                        <td>Hello World, this is Uwaoma Ogude with HNGi7 ID HNG-05492 using python for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-00039]</td>
+                        <td>Stephen Odundo</td>
+                        <td>Hello world, this is Stephen Odundo with HNGi7 ID HNG-00039 using python for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-00033]</td>
+                        <td>Mbora Githua</td>
+                        <td>Hello World, this is Mbora Githua with HNGi7 ID HNG-00033 using HTML for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-04292]</td>
+                        <td>Susan Wafula</td>
+                        <td>Hello World, this is Susan Wafula with HNGi7 ID HNG-04292 using python for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+                    <tr>
+                        <td>Sylvester_silver</td>
+                        <td>scripts/Sylvester_silver.js</td>
+                        <td>using JavaScript for stage 2 task. </td>
+                        <td>
+                            <div class='fail'>Fail</div>
+                        </td>
+                    </tr>
+
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-01951]</td>
+                        <td>Blessing Okakwu</td>
+                        <td>Hello world, this is Blessing Okakwu with HNGi7 ID HNG-01951 using Python for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-02107]</td>
+                        <td>Oluwaseun Iyiola</td>
+                        <td>Hello World, this is Oluwaseun Iyiola with HNGi7 ID HNG-02107 using Javascript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-01926]</td>
+                        <td>Victory Wekwa</td>
+                        <td>Hello World, this is Victory Wekwa with HNGi7 ID HNG-01926 using Python for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-00565]</td>
+                        <td>Belinda Agyeman</td>
+                        <td>Hello World, this is Belinda Agyeman with HNGi7 ID HNG-00565 using python for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-00533]</td>
+                        <td>Joshua Hassan</td>
+                        <td>Hello World, this is Joshua Hassan with HNGi7 ID HNG-00533 using Python for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-03544]</td>
+                        <td>Doreen Tingir</td>
+                        <td>Hello World, this is Doreen Tingir with HNGi7 ID HNG-03544 using JavaScript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-01389]</td>
+                        <td>Joshua Folorunsho</td>
+                        <td>Hello World, this is Joshua Folorunsho with HNGi7 ID HNG-01389 using JavaScript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-04894]</td>
+                        <td>Louis Ohaegbu</td>
+                        <td>Hello World, this is Louis Ohaegbu with HNGi7 ID HNG-04894 using Python for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-00202]</td>
+                        <td>Sanya Oluwadare</td>
+                        <td>Hello World, this is Sanya Oluwadare with HNGi7 ID HNG-00202 using JavaScript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-00148]</td>
+                        <td>Adetola Adebola</td>
+                        <td>Hello World, this is Adetola Adebola with HNGi7 ID HNG-00148 using javascript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-03203]</td>
+                        <td>Aniebiet Aaron</td>
+                        <td>Hello World, this is Aniebiet Aaron with HNGi7 ID HNG-03203 using Javascript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-05497]</td>
+                        <td>aj Khalil</td>
+                        <td>Hello World, this is aj Khalil with HNGi7 ID HNG-05497 using Python for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-02529]</td>
+                        <td>patrick isolokwu</td>
+                        <td>Hello World, this is patrick isolokwu with HNGi7 ID HNG-02529 using Javascript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-06699]</td>
+                        <td>Babatope Arogunjo</td>
+                        <td>Hello World, this is Babatope Arogunjo with HNGi7 ID HNG-06699 using JavaScript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-05018]</td>
+                        <td>Arafah Ogunfemi</td>
+                        <td>Hello World, this is Arafah Ogunfemi with HNGi7 ID HNG-05018 using Javascript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+                    <tr>
+                        <td>ben</td>
+                        <td>scripts/ben.py</td>
+                        <td>Hello World, this is Judicaelle Ben MBOUNGOU with HNGi7 ID HNG-00304 using python for stage 2 task. </td>
+                        <td>
+                            <div class='fail'>Fail</div>
+                        </td>
+                    </tr>
+
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-05566]</td>
+                        <td>benson momodu</td>
+                        <td>Hello World, this is benson momodu with HNGi7 ID HNG-05566 using javascript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-03370]</td>
+                        <td>Mohammad Bilal</td>
+                        <td>Hello World, this is Mohammad Bilal with HNGi7 ID HNG-03370 using Python for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+                    <tr>
+                        <td>chang</td>
+                        <td>scripts/chang.js</td>
+                        <td>Hello World, this is Judicaelle Ben MBOUNGOU with HNGi7 ID HNG-00304 using python for stage 2 task. </td>
+                        <td>
+                            <div class='fail'>Fail</div>
+                        </td>
+                    </tr>
+
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-02839]</td>
+                        <td>Chukwuamaka Osuji</td>
+                        <td>Hello World, this is Chukwuamaka Osuji with HNGi7 ID HNG-02839 using JavaScript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-05191]</td>
+                        <td>Chijioke Ikechukwu</td>
+                        <td>Hello World, this is Chijioke Ikechukwu with HNGi7 ID HNG-05191 using PYTHON for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-01671]</td>
+                        <td>Ajayi David</td>
+                        <td>Hello World, this is Ajayi David with HNGi7 ID HNG-01671 using Javascript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+                    <tr>
+                        <td>davoucii</td>
+                        <td>scripts/davoucii.js</td>
+                        <td>    </td>
+                        <td>
+                            <div class='fail'>Fail</div>
+                        </td>
+                    </tr>
+
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-02613]</td>
+                        <td>Zaheed Beita</td>
+                        <td>Hello World, this is Zaheed Beita with HNGi7 ID HNG-02613 using Javascript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-01740]</td>
+                        <td>Adedeji Abiola</td>
+                        <td>Hello World, this is Adedeji Abiola with HNGi7 ID HNG-01740 using JavaScript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+                    <tr>
+                        <td>devRex</td>
+                        <td>scripts/devRex.js</td>
+                        <td>Hello World, this is Akanimo Akpan with HNG7 ID HNG-02228 using javascript for stage 2 task. </td>
+                        <td>
+                            <div class='fail'>Fail</div>
+                        </td>
+                    </tr>
+
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-04827]</td>
+                        <td>Oyewole Oluwatobi</td>
+                        <td>Hello World, this is Oyewole Oluwatobi with HNGi7 ID HNG-04827 using python for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-04019]</td>
+                        <td>Festus Owumi</td>
+                        <td>Hello World, this is Festus Owumi with HNGi7 ID HNG-04019 using Python for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+                    <tr>
+                        <td>eniola_elemide</td>
+                        <td>scripts/eniola_elemide.py</td>
+                        <td>Hello World, this is Eniola Elemide with HNGi7 ID HNG-03752 using Python for stage 2 </td>
+                        <td>
+                            <div class='fail'>Fail</div>
+                        </td>
+                    </tr>
+
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-03310]</td>
+                        <td>Tochukwu Ewiwilem</td>
+                        <td>Hello World, this is Tochukwu Ewiwilem with HNGi7 ID HNG-03310 using PHP for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+                    <tr>
+                        <td>fletcher</td>
+                        <td>scripts/fletcher.js</td>
+                        <td>Hello World, this is Eniola Elemide with HNGi7 ID HNG-03752 using Python for stage 2 </td>
+                        <td>
+                            <div class='fail'>Fail</div>
+                        </td>
+                    </tr>
+
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-01113]</td>
+                        <td>Florence Wanjiru</td>
+                        <td>Hello World, this is Florence Wanjiru with HNGi7 ID HNG-01113 using JavaScript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-06103]</td>
+                        <td>Folajomi Shotunde</td>
+                        <td>Hello World, this is Folajomi Shotunde with HNGi7 ID HNG-06103 using JavaScript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-02359]</td>
+                        <td>Kufreabasi Udoh</td>
+                        <td>Hello World, this is Kufreabasi Udoh with HNGi7 ID HNG-02359 using Javascript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-03077]</td>
+                        <td>Gideon Peters</td>
+                        <td>Hello World, this is Gideon Peters with HNGi7 ID HNG-03077 using JavaScript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-00767]</td>
+                        <td>Gift Maduabuchi</td>
+                        <td>Hello World, this is Gift Maduabuchi with HNGi7 ID HNG-00767 using javascript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-04846]</td>
+                        <td>Habeebullah Agbaje</td>
+                        <td>Hello World, this is Habeebullah Agbaje with HNGi7 ID HNG-04846 using javascript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-03537]</td>
+                        <td>Akanji Olawumi</td>
+                        <td>Hello World, this is Akanji Olawumi with HNGi7 ID HNG-03537 using Python for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-00589]</td>
+                        <td>Ikechukwu Madubuike</td>
+                        <td>Hello World, this is Ikechukwu Madubuike with HNGi7 ID HNG-00589 using javascript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-04391]</td>
+                        <td>Ebele Andeh</td>
+                        <td>Hello World, this is Ebele Andeh with HNGi7 ID HNG-04391 using JavaScript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-00204]</td>
+                        <td>Abduljelili Umaru</td>
+                        <td>Hello World, this is Abduljelili Umaru with HNGi7 ID HNG-00204 using Javascript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-00666]</td>
+                        <td>Jeremiah Asuquo</td>
+                        <td>Hello World, this is Jeremiah Asuquo with HNGi7 ID HNG-00666 using JavaScript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-03939]</td>
+                        <td>Kang Breder</td>
+                        <td>Hello World, this is Kang Breder with HNGi7 ID HNG-03939 using Python for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-00902]</td>
+                        <td>Kenechukwu Mbanefo</td>
+                        <td>Hello World, this is Kenechukwu Mbanefo with HNGi7 ID HNG-00902 using Javascript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-00358]</td>
+                        <td>Kenneth Irungu</td>
+                        <td>Hello World, this is Kenneth Irungu with HNGi7 ID HNG-00358 using javascript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-05220]</td>
+                        <td>Ahmad Yusuf</td>
+                        <td>Hello World, this is Ahmad Yusuf with HNGi7 ID HNG-05220 using javaScript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-01147]</td>
+                        <td>Adebowale Adetunji</td>
+                        <td>Hello World, this is Adebowale Adetunji with HNGi7 ID HNG-01147 using javaScript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-01841]</td>
+                        <td>Believe Amadi</td>
+                        <td>Hello World, this is Believe Amadi with HNGi7 ID HNG-01841 using Python for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+                    <tr>
+                        <td>martialfield</td>
+                        <td>scripts/martialfield.py</td>
+                        <td>Hello World, this is Eniola Elemide with HNGi7 ID HNG-03752 using Python for stage 2 </td>
+                        <td>
+                            <div class='fail'>Fail</div>
+                        </td>
+                    </tr>
+
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-00755]</td>
+                        <td>Joseph Olugbohunmi</td>
+                        <td>Hello World, this is Joseph Olugbohunmi with HNGi7 ID HNG-00755 using Kotlin for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+                    <tr>
+                        <td>mehmzy</td>
+                        <td>scripts/mehmzy.js</td>
+                        <td>Hello World,this is Chinaemerem Onyenucheya with HNGi7 ID HNG-03653 using JavaScript for stage 2 </td>
+                        <td>
+                            <div class='fail'>Fail</div>
+                        </td>
+                    </tr>
+
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-05817]</td>
+                        <td>Micaiah Effiong</td>
+                        <td>Hello World, this is Micaiah Effiong with HNGi7 ID HNG-05817 using JavaScript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-02740]</td>
+                        <td>Adewumi Michael</td>
+                        <td>Hello World, this is Adewumi Michael with HNGi7 ID HNG-02740 using Python for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-01122]</td>
+                        <td>Moshood Salaudeen</td>
+                        <td>Hello World, this is Moshood Salaudeen with HNGi7 ID HNG-01122 using python for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-04333]</td>
+                        <td>Nicholas Karimi</td>
+                        <td>Hello World, this is Nicholas Karimi with HNGi7 ID HNG-04333 using Python for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-01235]</td>
+                        <td>Ohis Ohiorenoya</td>
+                        <td>Hello World, this is Ohis Ohiorenoya with HNGi7 ID HNG-01235 using Javascript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-00058]</td>
+                        <td>Olivier Nshimiye</td>
+                        <td>Hello World, this is Olivier Nshimiye with HNGi7 ID HNG-00058 using Python for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-03448]</td>
+                        <td>Oreoluwa Adetimehin</td>
+                        <td>Hello World, this is Oreoluwa Adetimehin with HNGi7 ID HNG-03448 using Python for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-00028]</td>
+                        <td>Osamudiamen Azamegbe</td>
+                        <td>Hello World, this is Osamudiamen Azamegbe with HNGi7 ID HNG-00028 using python for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-00724]</td>
+                        <td>Osazemen Osaigbevo</td>
+                        <td>Hello world, this is Osazemen Osaigbevo with HNGi7 ID HNG-00724 using Python for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+                    <tr>
+                        <td>oyinkan</td>
+                        <td>scripts/oyinkan.js</td>
+                        <td>Hello World,this is Chinaemerem Onyenucheya with HNGi7 ID HNG-03653 using JavaScript for stage 2 </td>
+                        <td>
+                            <div class='fail'>Fail</div>
+                        </td>
+                    </tr>
+
+                            
+
+                
+                    <tr>
+                        <td>ozolua</td>
+                        <td>scripts/ozolua.js</td>
+                        <td>Hello World, this is Calvin Ebun-Amu with HNGi7 ID HNG-00191 using JavaScript for stage 2 task. </td>
+                        <td>
+                            <div class='fail'>Fail</div>
+                        </td>
+                    </tr>
+
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-01940]</td>
+                        <td>Paul Chukwurah</td>
+                        <td>Hello World, this is Paul Chukwurah with HNGi7 ID HNG-01940 using JavaScript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-01413]</td>
+                        <td>pawan deore</td>
+                        <td>Hello World, this is pawan deore with HNGi7 ID HNG-01413 using JavaScript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-02335]</td>
+                        <td>Vershima Kelvin</td>
+                        <td>Hello World, this is Vershima Kelvin with HNGi7 ID HNG-02335 using javascript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-04114]</td>
+                        <td>Rilwan Yusuf</td>
+                        <td>Hello World, this is Rilwan Yusuf with HNGi7 ID HNG-04114 using Javascript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-01178]</td>
+                        <td>Opeyemi Stephen</td>
+                        <td>Hello World, this is Opeyemi Stephen with HNGi7 ID HNG-01178 using Javascript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-04616]</td>
+                        <td>ThankGod Busari</td>
+                        <td>Hello World, this is ThankGod Busari with HNGi7 ID HNG-04616 using Python for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+                    <tr>
+                        <td>segtron</td>
+                        <td>scripts/segtron.php</td>
+                        <td>Hello World, this is Bello Wasiu with HNGi7 ID HNG-00662 using PHP for stage 2 </td>
+                        <td>
+                            <div class='fail'>Fail</div>
+                        </td>
+                    </tr>
+
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-04554]</td>
+                        <td>Ser Raphaels</td>
+                        <td>Hello World, this is Ser Raphaels with HNGi7 ID HNG-04554 using JavaScript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-01325]</td>
+                        <td>Steve Waweru</td>
+                        <td>Hello World, this is Steve Waweru with HNGi7 ID HNG-01325 using Javascript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+                    <tr>
+                        <td>sylvercodez</td>
+                        <td>scripts/sylvercodez.py</td>
+                        <td>Hello World, this is Bello Wasiu with HNGi7 ID HNG-00662 using PHP for stage 2 </td>
+                        <td>
+                            <div class='fail'>Fail</div>
+                        </td>
+                    </tr>
+
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-03402]</td>
+                        <td>Nnamdi Obiagwu</td>
+                        <td>Hello World, this is Nnamdi Obiagwu with HNGi7 ID HNG-03402 using Python for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+                    <tr>
+                        <td>timileyin</td>
+                        <td>scripts/timileyin.php</td>
+                        <td>Hello World, My name is Ikumapayi Timileyin, my HNGi7 ID is HNG-04738 using PHP for stage 2 task. </td>
+                        <td>
+                            <div class='fail'>Fail</div>
+                        </td>
+                    </tr>
+
+                            
+
+                
+                    <tr>
+                        <td>ugwulo</td>
+                        <td>scripts/ugwulo.py</td>
+                        <td>Hello World, this is  Ndubuisi Ugwulo  with HNGi7 ID  HNG-02099  using  python  for stage 2 task.  </td>
+                        <td>
+                            <div class='fail'>Fail</div>
+                        </td>
+                    </tr>
+
+                            
+
+                
+                    <tr>
+                        <td>victor</td>
+                        <td>scripts/victor.js</td>
+                        <td>     </td>
+                        <td>
+                            <div class='fail'>Fail</div>
+                        </td>
+                    </tr>
+
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-03326]</td>
+                        <td>Victor Chukwurah</td>
+                        <td>Hello World, this is Victor Chukwurah with HNGi7 ID HNG-03326 using Javascript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-01643]</td>
+                        <td>Joel Adewole</td>
+                        <td>Hello World, this is Joel Adewole with HNGi7 ID HNG-01643 using PHP for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-00197]</td>
+                        <td>Oluwayanmife Akeju</td>
+                        <td>Hello World, this is Oluwayanmife Akeju with HNGi7 ID HNG-00197 using JS for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                            
+
+                
+
+                    <tr>
+                        <td>[HNG-04535]</td>
+                        <td>Yahaya Yohanna</td>
+                        <td>Hello World, this is Yahaya Yohanna with HNGi7 ID HNG-04535 using Javascript for stage 2 task</td>
+                        <td>
+                            <div class='pass'>Pass</div>
+                        </td>
+                    </tr>
+                                        <!-- <tr>
+                            <td>12334455</td>
+                            <td>Adedeji Abiola</td>
+                            <td>Dejiabiola@yahoo.com</td>
+                            <td>Hello World</td>
+                            <td>
+                                <div class='pass'>Pass</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>12334455</td>
+                            <td>Adedeji Abiola</td>
+                            <td>Dejiabiola@yahoo.com</td>
+                            <td>Hello World</td>
+                            <td>
+                                <div class='pass'>Pass</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>12334455</td>
+                            <td>Adedeji Abiola</td>
+                            <td>Dejiabiola@yahoo.com</td>
+                            <td>Hello World</td>
+                            <td>
+                                <div class='pass'>Pass</div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>12334455</td>
+                            <td>Adedeji Abiola</td>
+                            <td>Dejiabiola@yahoo.com</td>
+                            <td>Hello World</td>
+                            <td>
+                                <div class='fail'>Fail</div>
+                            </td>
+                        </tr> -->
+        </tbody>
+    </table>
+</div>
+</section>
+    </main>
+</body>
+
+</html>
