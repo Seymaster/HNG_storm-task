@@ -1,5 +1,5 @@
 <?php
-
+require 'frontend/topcache.php';
 //Get scripts
 $folder = 'scripts';
 $files = scandir($folder);
@@ -197,3 +197,4 @@ $total = count($members);
 // exit;
 
 include 'frontend/main.php';
+require 'frontend/bottomcache.php';
