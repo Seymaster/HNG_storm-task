@@ -1,8 +1,9 @@
 var myIntroduction = {
-    fullname: "Onyebuchi Augustine Sopulu",
+    firstName: "Onyebuchi",
+    lastName: 'Augustine',
     id: "HNG-06016",
-    language: "javascript",
+    language: "Javascript",
     email: "tempuspromus@gmail.com",
-}
-
-console.log("Hello World, this is " + myIntroduction.fullname + " with HNGi7 ID " + myIntroduction.id + " using " + myIntroduction.language + " for stage 2 task." + myIntroduction.email)
+};
+let onyeOutput = `Hello World, this is [${myIntroduction.firstName}] [${myIntroduction.lastName}] with HNGi7 ID [${myIntroduction.id}] using [${myIntroduction.language}] for stage 2 task. ${myIntroduction.email}`;
+console.log(onyeOutput)
