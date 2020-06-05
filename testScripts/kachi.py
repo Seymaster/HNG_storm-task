@@ -4,13 +4,13 @@
 #My name, ID and task
 
 def details():
-    first_name = '[Godwin]'
-    last_name = '[Eze]'
-    language = '[Python]'
-    HNGi7_ID = '[HNG-00751]'
-    email = 'godwinkachee@gmail.com'
+    first_name = "[Godwin]"
+    last_name = "[Eze]"
+    language = "[Python]"
+    HNGi7_ID = "[HNG-00751]"
+    email = "godwinkachee@gmail.com"
 
-    print("Hello World, this is "+first_name + last_name+" with HNGi7 ID "+HNGi7_ID+" using "+language+ " for stage 2 task. "+email)
+    print("Hello World, this is", first_name, last_name, "with HNGi7 ID", HNGi7_ID, "using", language, "for stage 2 task.", email)
     return()
 
 #call the function
