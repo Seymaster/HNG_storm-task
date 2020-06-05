@@ -1,7 +1,7 @@
 <?php
 
 //Get scripts
-$folder = 'testScripts';
+$folder = 'scripts';
 $files = scandir($folder);
 
 //Check if the script exists and set its command
@@ -24,6 +24,26 @@ function getScripts($files, $folder)
     return $scripts;
 };
 
+function stripbrackets($data)
+{
+    $data = preg_replace('/\[/i', '', $data);
+
+    $data = preg_replace('/\]/i', '', $data);
+    return $data;
+
+}
+
+function formatFileID($file)
+{
+    $file = explode("/", $file);
+    $file = $file[1];
+    $file = explode(".", $file);
+    return $file[0];
+    // var_dump($file);
+    // exit;
+
+}
+
 $scripts = getScripts($files, $folder);
 $totalScripts = count($scripts);
 $totalScript = 0;
@@ -37,36 +57,45 @@ foreach ($scripts as $key => $script) {
     }
 }
 
-function stripbrackets($data)
-{
-    $data = preg_replace('/\[/i', '', $data);
-
-    $data = preg_replace('/\]/i', '', $data);
-    return $data;
-
-}
-
 $members = [];
 $messages = [];
 
 $re = '/^Hello World, this is (?<first>\[\w+\])? (?<last>\[\w+\])? with HNGI7 ID (?<id>\[HNG-\d+\])? using (?<language>\[\w+\])? for stage 2 task. /i';
 
 foreach ($content as $key => $data) {
-    $output = $content[$key]['output'];
+    $output = trim($content[$key]['output']);
     $str = $output;
     $email = explode(" ", $str);
     $email = array_pop($email);
     $email = trim($email);
+<<<<<<< HEAD
     $filename = $content[$key]['filename'];
     if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
         preg_match_all($re, $str, $matches, PREG_SET_ORDER, 0);       
+=======
+
+    $filename = $content[$key]['filename'];
+    // var_dump($filename);
+    // var_dump($email);
+    // echo "<br>";
+    // echo "<br>";
+    // continue;
+
+    $fileID = formatFileID($filename);
+    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        preg_match_all($re, $str, $matches, PREG_SET_ORDER, 0);
+>>>>>>> 393db6384bdd92e769768e9fc9f1633799ed40b2
         if ($matches) {
             foreach ($matches as $match) {
                 $totalPassed++;
                 $userData = $match[0];
 
                 $data = preg_replace('/\[/i', '', $userData);
+<<<<<<< HEAD
                 $trimData = explode(".",trim($data));
+=======
+                $trimData = explode(".", trim($data));
+>>>>>>> 393db6384bdd92e769768e9fc9f1633799ed40b2
                 $data = preg_replace('/\]/i', '', $trimData[0]);
 
                 $fullname = $match['first'] . ' ' . $match['last'];
@@ -75,6 +104,7 @@ foreach ($content as $key => $data) {
 
                 $fullname = preg_replace('/\]/i', '', $fullname);
 
+<<<<<<< HEAD
                 $messages[] = ['id' => $match['id'], 'message' => $data, 'name' => $fullname, 'pass' => true, 'filename' => $filename];
 
                 $members[] = [
@@ -86,12 +116,26 @@ foreach ($content as $key => $data) {
                     'language' => stripbrackets($match['language']), 
                     'filename' => $filename, 
                     'status' => 'Pass'
+=======
+                $messages[$fileID] = ['id' => stripbrackets($match['id']), 'message' => $data, 'name' => $fullname, 'pass' => true, 'filename' => $filename];
+
+                $members[] = [
+                    'output' => $data,
+                    'id' => stripbrackets($match['id']),
+                    'firstname' => stripbrackets($match['first']),
+                    'lastname' => stripbrackets($match['last']),
+                    'email' => $email,
+                    'language' => stripbrackets($match['language']),
+                    'filename' => $filename,
+                    'status' => 'Pass',
+>>>>>>> 393db6384bdd92e769768e9fc9f1633799ed40b2
                 ];
             }
         } else {
             $userMessage = str_replace($email, '', $output);
             $userMessage = preg_replace('/\[/', '', $userMessage);
             $userMessage = preg_replace('/\]/', '', $userMessage);
+<<<<<<< HEAD
             $messages[] = ['id' => 'Poorly Formated File', 'message' => $userMessage, 'pass' => false, "filename" => $filename];
             $members[] = [
                     'output' => $data,
@@ -117,20 +161,59 @@ foreach ($content as $key => $data) {
                     'filename' => $filename, 
                     'status' => 'Fail'
                 ];
+=======
+            $messages[] = ['id' => $fileID, 'message' => $userMessage, 'pass' => false, "filename" => $filename, 'errors' => $fileID . ' failed eith invalid email.',
+            ];
+
+            $members[] = [
+                'output' => $data,
+                'id' => stripbrackets($match['id']),
+                'firstname' => stripbrackets($match['first']),
+                'lastname' => stripbrackets($match['last']),
+                'email' => $email,
+                'language' => stripbrackets($match['language']),
+                'filename' => $filename,
+                'status' => 'Fail',
+            ];
+        }
+    } else {
+        $output = $u ?? $fileID . ' failed: Script did not return an output';
+        $failed = "Wrong Output";
+        $messages[$fileID] = ['id' => $fileID, 'message' => $output, 'pass' => false, 'filename' => $filename, 'errors' => $failed];
+        $members[] = [
+            'output' => $data,
+            'id' => 'Invalid',
+            'firstname' => 'Invalid',
+            'lastname' => 'Invalid',
+            'email' => $email,
+            'language' => 'Invalid',
+            'filename' => $filename,
+            'status' => 'Fail',
+        ];
+>>>>>>> 393db6384bdd92e769768e9fc9f1633799ed40b2
     }
 }
 
 if ($_SERVER['QUERY_STRING'] === 'json') {
     header('Content-Type: application/json');
+<<<<<<< HEAD
     if(ob_get_level()) ob_start();
 
     $members = json_encode($members);    
+=======
+    if (ob_get_level()) {
+        ob_start();
+    }
+
+    $members = json_encode($members);
+>>>>>>> 393db6384bdd92e769768e9fc9f1633799ed40b2
     echo $members;
     ob_flush();
     flush();
     exit;
 }
 
+<<<<<<< HEAD
 $total = count($members);
 // echo $totalPassed;
 // echo $totalScripts;
@@ -269,3 +352,48 @@ $total = count($members);
 </body>
 
 </html>
+=======
+if (isset($_GET['passed']) && $_GET['passed'] === 'true') {
+    header('Content-Type: application/json');
+    $passed = [];
+    foreach ($messages as $output) {
+        if ($output['pass'] === true) {
+            $passed[] = $output;
+        }
+    }
+    if (ob_get_level()) {
+        ob_start();
+    }
+
+    $passed = json_encode($passed);
+    echo $passed;
+    ob_flush();
+    flush();
+    exit;
+
+}
+
+if (isset($_GET['failed']) && $_GET['failed'] === 'true') {
+    header('Content-Type: application/json');
+    $failed = [];
+    foreach ($messages as $output) {
+        if ($output['pass'] === false) {
+            $failed[] = $output;
+        }
+    }
+
+    $failed = json_encode($failed);
+    echo $failed;
+    exit;
+
+}
+
+$total = count($members);
+
+// var_dump($members);
+// echo "\n";
+// exit;
+
+include 'frontend/main.php';
+
+>>>>>>> 393db6384bdd92e769768e9fc9f1633799ed40b2
