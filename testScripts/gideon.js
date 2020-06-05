@@ -2,7 +2,7 @@ var info = {
 	id: "HNG-03077",
 	firstName: "Gideon",
 	lastName: "Peters",
-	email: "gideonpeters85@gmail.com",
+	email: "gideon.peters@stu.cu.edu.ng",
 	language: "JavaScript",
 };
 
