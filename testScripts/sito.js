@@ -1,22 +1,9 @@
-
-
-//my information Object goes here
-
-//sito information Object goes here
-
-var personalInformation = {
-fullName: "Ogundare Taiwo",
-hng_ID: "HNG-03186",
-email: "ogundare_taiwo1@yahoo.com",
-programmeLang: "Javascript"
-}
-
-personalInformation = JSON.stringify(personalInformation)
-personalInformation = JSON.parse(personalInformation)
-
-var fullName = personalInformation.fullName;
-var hng_ID = personalInformation.hng_ID;
-var email = personalInformation.email;
-var programmeLang = personalInformation.programmeLang;
-
-console.log("Hello world, this is " + fullName + " with HNGi7 ID " + hng_ID + " using " + programmeLang + " for Stage 2 task. " + email );
+const sitoInfo = {
+     firstName: "Ogundare",
+     lastName: "Taiwo",
+     hngId: "HNG-03186",
+     programmelanguage: "JavaScript",
+     email: "ogundare_taiwo1@yahoo.com"
+ };
+  updateDisplay = `Hello World, this is [${sitoInfo.firstName}] [${sitoInfo.lastName}] with HNGi7 ID [${sitoInfo.hngId}] using [${sitoInfo.programmelanguage}] for stage 2 task. ${sitoInfo.email}`;
+ console.log(updateDisplay);
