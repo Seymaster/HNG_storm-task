@@ -1,18 +1,16 @@
 
 var dataset = {
-	firstName:"William",
- 	lastName:"Imoukhuede",
-  	ID:"HNG-03975",
-   	plat:"Javascript", 
-  	stage:"two",
-  	email: "wimoukhuede@gmail.com"
+    firstName:"William",
+    lastName:"Imoukhuede",
+    ID:"HNG-03975",
+    plat:"Javascript",
+    stage:"2",
+    email: "wimoukhuede@gmail.com"
   };
-
+var submit;
 function HNGTask()
       {
-      	 var submit = "Hello World, this is " + dataset.firstName + " " + dataset.lastName + 
-      	 " with HNGi7 ID [" + dataset.ID + "]  with email [" + dataset.email + "] using [" + dataset.plat + "] for stage " + 
-      	   dataset.stage + " task.";
-      	console.log(submit);
+        submit = `Hello World, this is ${[dataset.firstName]} ${[dataset.lastName]} with HNGi7 ID ${[dataset.ID]} using ${[dataset.plat]} for stage ${dataset.stage} task. ${dataset.email}`
+        console.log(submit);
       }
 HNGTask();
