@@ -1,3 +1,9 @@
-Python 3.8.3 (tags/v3.8.3:6f8c832, May 13 2020, 22:20:19) [MSC v.1925 32 bit (Intel)] on win32
-Type "help", "copyright", "credits" or "license()" for more information.
->>> 
+def info():
+    first_name = "Abisola"
+    last_name = "Tayo"
+    hngi7_id = "HNG-00227"
+    email_address = "tayoabisola44@gmail.com"
+    language = "PYTHON"
+    output = 'Hello World, this is [{}] [{}] with HNGi7 ID [{}] using [{}] for stage 2 task. {}' .format(first_name, last_name, hngi7_id, language, email_address)
+    print(output)
+info()
