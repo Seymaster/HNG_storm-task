@@ -1,5 +1,5 @@
 function getInfo({ firstName, lastName, id, language, email }) {
-  return `"Hello World, this is [${firstName}] [${lastName}] with HNGi7 ID [${id}] using [${language}] for stage 2 task. ${email}"`;
+  return `Hello World, this is [${firstName}] [${lastName}] with HNGi7 ID [${id}] using [${language}] for stage 2 task. ${email}`;
 }
 const content = getInfo({
   firstName: 'Etiene',
