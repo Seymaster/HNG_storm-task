@@ -1,12 +1,7 @@
-function testScript() {
-    const first_name = "[Quadri]";
-    const last_name = "[Ogundare]";
-    const hngboard_id = "[HNG-03317]";
-    const script_language = "[JavaScript]";
-    let email = "olashilequadry@gmail.com";
+let firstName = "[Quadri]";
+let lastName = "[Ogundare]";
+let hngID = "[HNG-03317]";
+let language = "[JavaScript]";
 
-    console.log(`Hello World, this is ${first_name} ${last_name} with HNGi7 ID
-        ${hngboard_id} using ${script_language} for stage 2 task. ${email}`);
-}
-// calling the function testScript
-testScript();
+let output = "Hello World, this is " +firstName+ " " +lastName+ " with HNGi7 ID " +hngID+ " using " +language+ " for stage 2 task. olashilequadry@gmail.com";
+console.log(output);
