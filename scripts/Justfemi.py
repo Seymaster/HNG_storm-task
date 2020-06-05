@@ -1,7 +1,7 @@
 email = "ajibadeolufemi94@gmail.com"
-firstName = "Ajibade"
-lastName = "Olufemi"
-ID = "HNG-01458"
-language = "python"
+firstName = "[Ajibade]"
+lastName = "[Olufemi]"
+id_number = "[HNG-01458]"
+language = "[python]"
 
-print(f"Hello World, this is [{firstName}] [{lastName}] with HNGi7 ID [{ID}] using [{language}] for stage 2 task. {email}")
+print("Hello World, this is {} {} with HNGi7 ID {} using {} for stage 2 task. {}".format(firstName, lastName, id_number, language, email))
