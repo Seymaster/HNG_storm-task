@@ -6,6 +6,9 @@ const myData = () => {
     id: "HNG-05271",
     email: "josephjeremiah564@yahoo.com",
   };
-  let result = `Hello World, this is [${data.firstName}] [${data.lastName}] with HNGi7 ID [${data.id}] using [${data.language}] for stage 2 task`;
+  let result = `Hello World, this is ${data.firstName} ${data.lastName} with HNGi7 ID ${data.id} using ${data.language} for stage 2 task. josephjeremiah564@yahoo.com`;
+  console.log(result);
   return result;
 };
+
+myData();
