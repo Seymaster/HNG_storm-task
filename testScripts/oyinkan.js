@@ -1,19 +1,15 @@
 function Output() {
-  const Internship = [
-    {
-      lastName: "Yahaya",
-      firstName: "Oyinkansola",
-      id: "HNG-01876",
-      language: "javascript",
-      email: "yahayaoyinkansola@gmail.com",
-    },
-  ];
+  const Internship = {
+    firstName: "Oyinkansola",
+    lastName: "Yahaya",
+    id: "HNG-01876",
+    language: "javascript",
+    email: "yahayaoyinkansola@gmail.com",
+  };
 
-  Internship.map((Intern) =>
-    console.log(
-      `Hello World, this is ${Intern.lastName} ${Intern.firstName} with HNGi7 ID [${Intern.id}] with email [${Intern.email}] using [${Intern.language}] for stage 2 task.`
-    )
-  );
+  const text = `Hello World, this is [${Internship.firstName}] [${Internship.lastName}] with HNGi7 ID [${Internship.id}] using [${Internship.language}] for stage 2 task. ${Internship.email}`;
+
+  return text;
 }
 
-Output();
+console.log(Output());
