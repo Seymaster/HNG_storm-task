@@ -19,6 +19,4 @@ var hng_ID = personalInformation.hng_ID;
 var email = personalInformation.email;
 var programmeLang = personalInformation.programmeLang;
 
-console.log("Hello world, this is " + fullName + " with HNGi7_Id " + hng_ID + " using " + programmeLang + " for Stage 2 task. " + email );
-
-
+console.log("Hello world, this is " + fullName + " with HNGi7 ID " + hng_ID + " using " + programmeLang + " for Stage 2 task. " + email );
