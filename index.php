@@ -204,13 +204,13 @@ $total = count($members);
             <ul class="leaders">
                 <li>Leads:</li>
                 <li>
-                    <a href="https://www.github.com/Seymaster">ESI - Backend</a>
+                    <a href="https://www.github.com/Nerdpraise">Praise - Team Lead</a>
                 </li>
                 <li>
-                    <a href="https://www.github.com/joshuafolorunsho">__Josh__ - Frontend</a>
+                    <a href="https://www.github.com/kangbreder">kangbreder - DevOps Deputy</a>
                 </li>
                 <li>
-                    <a href="https://www.github.com/">Aj - devOps</a>
+                    <a href="https://www.github.com/dillionmegida">dillion - Frontend Deputy</a>
                 </li>
             </ul>
         </div>
