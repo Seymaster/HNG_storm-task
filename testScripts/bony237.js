@@ -1,6 +1,6 @@
 // informations
-const firstName = "bony junior";
-const lastname = "Ngounou Ngoubeyou";
+const firstName = "bony";
+const lastname = "Ngounou";
 const hngID = "HNG-01619";
 const lang = "JavaScript";
 const email = "nbj.ngoube@gmail.com";
