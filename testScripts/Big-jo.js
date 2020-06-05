@@ -1,4 +1,4 @@
-const projectOutput = () => {
+const Output = () => {
     const data = {
         firstName : "Joseph" ,
         lastName : "Henshaw" ,
@@ -9,4 +9,4 @@ const projectOutput = () => {
 
     console.log(`Hello World, this is [${data.firstName}] [${data.lastName}] with HNGi7 ID [${data.id}] using [${data.language}] for stage 2 task. ${data.email}`)
 }
-projectOutput()
+Output()
