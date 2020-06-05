@@ -1,9 +1,9 @@
 const matthew_details = {
-    firstName: "Matthew",
-    lastName: "Igbede",
-    id: "HNG-03082",
-    email: "matthewigbede@gmail.com",
-    language: "Javascript",
+    firstName: ["Matthew"],
+    lastName: ["Igbede"],
+    id: ["HNG-03082"],
+    email: ["matthewigbede@gmail.com"],
+    language: ["Javascript"],
 
 };
 
