@@ -53,7 +53,7 @@ $totalPassed = 0;
 foreach ($scripts as $key => $script) {
     if (file_exists($scripts[$key]['name'])) {
         $read = exec("{$scripts[$key]['command']} {$scripts[$key]['name']}");
-        $content[] = ['output' => $read, 'filename' => $scripts[$key]['name']];
+        $content[] = ['output' => $read, 'filename' => $scripts[$key]['filename']];
     }
 }
 
