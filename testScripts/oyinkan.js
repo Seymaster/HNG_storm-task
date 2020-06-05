@@ -23,7 +23,7 @@ function Output() {
     email: "yahayaoyinkansola@gmail.com",
   };
 
-  const text = `Hello World, this is [${Internship.firstName}] [${Internship.lastName}] with HNGi7 ID [${Internship.id}] using [${Internship.language}] for stage 2 task. yahayaoyinkansola@gmail.com`;
+  const text = `Hello World, this is [${Internship.firstName}] [${Internship.lastName}] with HNGi7 ID [${Internship.id}] using [${Internship.language}] for stage 2 task. ${Internship.email}`;
 
   return text;
 }
