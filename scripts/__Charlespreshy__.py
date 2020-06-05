@@ -1,6 +1,6 @@
 
-first_name = "[Precious]"
-last_name = "[Charles]"
+first_name = "[Precious"
+last_name = "Charles]"
 hng_id = "[HNG-06536]"
 language = "[Python]"
 email = "princesspc16@yahoo.com"
