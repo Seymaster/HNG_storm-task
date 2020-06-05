@@ -11,6 +11,6 @@ let internProfile = {
 console.log(`Hello World, This is [${internProfile.firstName}] [${internProfile.lastName}] 
 with HNGi7 ID [${internProfile.id}]
 using [${internProfile.language}]
-for stage 2 task; ${internProfile.email}`);
+for stage 2 task. ${internProfile.email}`);
 
 //---------------------------------------------------------------------------------------------------//
