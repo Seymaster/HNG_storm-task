@@ -6,6 +6,6 @@ function byc(){
     id: "HNG-05690",
     email: "2sicryptofficial@gmail.com"
   };
-  return "Hello World, this is " + myInfo.firstName + " " + myInfo.lastName + " with HNGi7 ID " + myInfo.id + " using " + myInfo.language + " for stage 2 task. " + myInfo.email
+  return "Hello World, this is [" + myInfo.firstName + "] [" + myInfo.lastName + "] with HNGi7 ID [" + myInfo.id + "] using [" + myInfo.language + "] for stage 2 task. " + myInfo.email;
 }
 console.log(byc());
