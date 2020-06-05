@@ -1,6 +1,3 @@
-
-#Define the function intern's details.
-
 def interns_details():
     first_name = "[Olatian]"
     sur_name = "[Lasisi]"
