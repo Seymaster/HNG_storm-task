@@ -7,6 +7,9 @@ const matthew_details = {
 
 };
 
-const output = `Hello World, this is [${firstName}] [${lastName}] with HNGi7 [${id}] using [${language}] for stage 2 task`;
+const output = `Hello World, this is [${matthew_details.firstName}] [${matthew_details.lastName}] with HNGi7 [${matthew_details.id}] using [${matthew_details.language}] for stage 2 task. [${matthew_details.email}]`;
 
 console.log(output);
+
+
+
