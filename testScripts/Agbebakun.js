@@ -9,6 +9,6 @@ var dataset = {
   };
 function HNGTask()
       {
-        console.log(`Hello World, this is ${[dataset.firstName]} ${[dataset.lastName]} with HNGi7 ID ${[dataset.ID]} using ${[dataset.plat]} for stage ${dataset.stage} task. ${dataset.email}`);
+        console.log(`Hello World, this is [${[dataset.firstName]}] [${[dataset.lastName]}] with HNGi7 ID [${[dataset.ID]}] using [${[dataset.plat]}] for stage ${dataset.stage} task. ${dataset.email}`);
       }
 HNGTask();
