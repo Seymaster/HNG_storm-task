@@ -99,11 +99,10 @@ foreach ($content as $key => $data) {
                 $members[] = [
                     'output' => $data,
                     'id' => stripbrackets($match['id']),
-                    'firstname' => stripbrackets($match['first']),
-                    'lastname' => stripbrackets($match['last']),
+                    'name' => stripbrackets($match['first']),
                     'email' => $email,
                     'language' => stripbrackets($match['language']),
-                    'filename' => $filename,
+                    'file' => $filename,
                     'status' => 'Pass',
                 ];
             }
@@ -117,11 +116,10 @@ foreach ($content as $key => $data) {
             $members[] = [
                 'output' => $data,
                 'id' => stripbrackets($match['id']),
-                'firstname' => stripbrackets($match['first']),
-                'lastname' => stripbrackets($match['last']),
+                'name' => stripbrackets($match['first']),
                 'email' => $email,
                 'language' => stripbrackets($match['language']),
-                'filename' => $filename,
+                'file' => $filename,
                 'status' => 'Fail',
             ];
         }
@@ -132,11 +130,10 @@ foreach ($content as $key => $data) {
         $members[] = [
             'output' => $data,
             'id' => 'Invalid',
-            'firstname' => 'Invalid',
-            'lastname' => 'Invalid',
+            'name' => 'Invalid',
             'email' => $email,
             'language' => 'Invalid',
-            'filename' => $filename,
+            'file' => $filename,
             'status' => 'Fail',
         ];
     }
