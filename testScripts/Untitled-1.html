@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+</head>
+<body>
+   <p>&quot;</p>
+   <script>
+      // HNG-00966;
+
+    function sayMyDetails() {
+        let firstName = "Gift";
+        let lastname = "Chukwunweike";
+        let HNG_id = "HNG-00966";
+        let email = "<a href='mailto:gift.weike@gmail.com'>gift.weike@gmail.com</a>&quot;"
+        let language = "JAVASCRIPT";
+        let message = `&quot;Hello World, this is [${firstName}] [${lastname}] with HNGi7 ID [${HNG_id}] using [${language}] for stage 2 task. ${email}`;
+        return message
+    };
+    console.log(sayMyDetails())
+    document.write(sayMyDetails())
+   </script>
+</body>
+</html>
