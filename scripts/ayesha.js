@@ -5,5 +5,5 @@ var Myinfo = {
     language: '[JavaScript]',
     email: 'ayeshaola4@gmail.com'
 };
- console.log ("Hello World, this is " + Myinfo.firstname + Myinfo.lastname + " with HNGi7 " + Myinfo.HNGi7 + " using " + Myinfo.language  +
+ console.log ("Hello World, this is " + Myinfo.firstname + " " + Myinfo.lastname + " with HNGi7 " + Myinfo.HNGi7 + " using " + Myinfo.language  +
   " for stage 2 task. " + Myinfo.email);
