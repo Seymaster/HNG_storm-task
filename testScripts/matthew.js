@@ -1,15 +1,7 @@
-const matthew_details = {
-    firstName: "Matthew",
-    lastName: "Igbede",
-    id: "HNG-03082",
-    email: "matthewigbede@gmail.com",
-    language: "Javascript",
+let firstName = "[Matthew]";
+let lastName = "[Igbede]";
+let hngID = "[HNG-03082]";
+let language = "[JavaScript]";
 
-};
-
-const output = `Hello World, this is [${matthew_details.firstName}] [${matthew_details.lastName}] with HNGi7 [${matthew_details.id}] using [${matthew_details.language}] for stage 2 task. [${matthew_details.email}]`;
-
+let output = "Hello World, this is " +firstName+ " " +lastName+ " with HNGi7 ID " +hngID+ " using " +language+ " for stage 2 task. matthewigbede@gmail.com";
 console.log(output);
-
-
-
