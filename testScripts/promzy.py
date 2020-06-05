@@ -1,13 +1,14 @@
-def my_info():
-    firstname = "Promise"
-    lastname = "Mpamaugo"
-    hngi7_id = "HNG-05001"
-    p_language = "python"
-    email = "promise.course@gmail.com"
-    print(f"Hello World, this is {firstname} {lastname} with HNGi7 ID {hngi7_id} using {p_language} for stage "
-          f"2 task.")
+def HNGi7():
+    firstName = 'Promise'
+    lastname = 'Mpamaugo'
+    ID = 'HNG-05001'
+    lang = 'Python'
+    email = 'promise.course.com'
+    # The '%' operator is used to format a set of variables enclosed in a tuple.
+    script = 'Hello World this is [%s] [%s] with HNGi7 ID [%s] using [%s] for stage 2 task. %s' % (
+        firstName, lastname, ID, lang, email)
+    return script
 
 
-my_info()
-
-
+HNGi7()
+print(HNGi7())
