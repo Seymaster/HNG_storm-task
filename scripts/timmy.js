@@ -5,7 +5,7 @@ const displayMessage = () => {
       lastname: "Ayantunji",
       id: "HNG-02372",
       language: "JavaScript",
-      email: "jbassuquo@outlook.com",
+      email: "ayantunjitimilehin@gmail.com",
     }
     
   const message =  `Hello World, this is [${internData.firstname}] [${internData.lastname}] with HNGi7 ID [${internData.id}] using [${internData.language}] for stage 2 task. ${internData.email}`;

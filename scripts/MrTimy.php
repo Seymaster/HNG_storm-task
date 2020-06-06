@@ -1,16 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<title>HNGi7s</title>
-</head>
-<body>
-	<?php
-	echo "Hello World, this is [Eke][Timothy] with HNGi7 ID [HNG-05937] using [PHP] for stage 2 task. 
-	timothy.eke.235043@unn.edu.ng";	
-	
-	?>
-</body>
-</html>
+<?php 
+
+$fN = "Eke";
+$lN = "Timothy";
+$hngId = "HNG-05937";
+$language = 'PHP';
+
+function printOutput($fname, $lname, $id, $language){
+	echo "Hello World, this is [" .$fname ."] [" .$lname ."] with HNGi7 ID [" .$id ."] using [" .$language ."] for stage 2 task. timothy.eke.235043@unn.edu.ng";
+}
+
+printOutput($fN , $lN, $hngId, $language);
+?>

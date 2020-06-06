@@ -3,7 +3,7 @@ const alexobj = {
     firstName: "Shiaondo",
     lastName: "Orkuma",
     id: "HNG-00053",
-    email: "shiaoondoorkuma@gmail.com",
+    email: "shiaondoorkuma@gmail.com",
     language: "Javascript",
 };
 
