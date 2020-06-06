@@ -1,4 +1,4 @@
-let internInfo = {firstName: 'Adebanji',lastname: 'Akinnukawe', ID: 'HNG-06005', language: 'Javascript', email: 'henryirons@gyahoo.com'}
+let internInfo = {firstName: 'Adebanji',lastname: 'Akinnukawe', ID: 'HNG-06005', language: 'Javascript', email: 'henryirons@yahoo.com'}
 
 function info () {
   const str =
