@@ -248,15 +248,15 @@
         <h1>Team Storm</h1>
         <div class='leads-container'>
             <div>
-                <p>@Esi</p>
+                <p>@Praise</p>
                 <p>Team Lead</p>
             </div>
             <div>
-                <p>@__josh__</p>
+                <p>@kangbreder</p>
                 <p>Frontend Lead</p>
             </div>
             <div>
-                <p>Aj</p>
+                <p>@moscharito</p>
                 <p>DevOps</p>
             </div>
         </div>

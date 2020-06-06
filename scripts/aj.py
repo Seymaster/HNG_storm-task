@@ -1,6 +1,6 @@
+  
 import json
 
-# a Python object (dict):
 x = {
   "firstName": "aj",
     "lastName": "Khalil",
@@ -12,4 +12,4 @@ x = {
 y = json.dumps(x)
 
 # the result is a JSON string:
-print("Hello World, this is [aj] [Khalil] with HNGi7 ID [HNG-05497] using [Python] for stage 2 task. khalilajstunner@gmail.com")
+print("Hello World, this is [aj] [Khalil] with HNGi7 ID [HNG-05497] using [Python] for stage 2 task. samwel.naftali@strathmore.edu")

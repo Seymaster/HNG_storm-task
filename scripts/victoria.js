@@ -1,9 +1,9 @@
-const me = {
-    firstName: '[Victoria]',
-    lastName: '[Poromon]',
-    id: '[HNG-00591]',
-    language: '[Javascript]',
-    email: 'victoriaporomon@gmail.com',
-}
-let output = "Hello World, this is  "+ me.firstName+ " "+me.lastName + " with HNGi7 ID " + me.id + " using " + me.language + " for stage 2 task " + me.email;
-console.log(output);
+const taskTwo = {
+    firstName: "Victoria",
+    lastName: "Ekefre",
+    email: "vikikef2@gmail.com",
+    language: "JavaScript",
+    id: "HNG-06713",
+    };
+    str_output = `Hello World, this is [${taskTwo.firstName}] [${taskTwo.lastName}] with HNGi7 ID [${taskTwo.id}] using [${taskTwo.language}] for stage 2 task. ${taskTwo.email}`;
+    console.log(str_output);
