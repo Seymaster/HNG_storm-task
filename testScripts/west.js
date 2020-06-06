@@ -1,7 +1,12 @@
-var firstName = 'Kehinde';
-var lastName = 'Ajibola';
-var language = 'Javascript';
-var id = 'HNG-06615';
+const userInfo = {
+    firstName: "Kehinde",
+    lastName: "Ajibola",
+    id: "HNG-06615",
+    email: "wesleykay001@yahoo.com",
+    language: "Javascript",
+};
 
+const output = ({ firstName, lastName, id, language, email }) =>
+    `Hello World, this is [${firstName}] [${lastName}] with HNGi7 ID [${id}] using [${language}] for stage 2 task. ${email}`;
 
-console.log('Hello World, this is ' + firstName + ' ' + lastName + ' with HNGi7 ID ' + id + ' using ' + language + ' for stage 2 task. wesleykay001@yahoo.com');
+console.log(output(userInfo));
