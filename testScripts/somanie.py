@@ -1,7 +1,14 @@
-def main():
-    print("Hello World, this is [Chisom] [Aniekwensi] with HNGi7 ID [HNG-02509] using [Python] for stage 2 task. sommaniekwensi@gmail.com")
+details = {
+    "fname": "Chisom",
+    "lname": "Aniekwensi",
+    "ID": "HNG-02509",
+    "lang": "python",
+    "email": "sommaniekwensi@gmail.com",
+}
 
-
-if __name__ == '__main__':
-    main()
-    
+text = "Hello World, this is [{}] [{}] with HNGi7 ID [{}] using [{}] for stage 2 task. {}".format(details["fname"],
+                                                                                                  details["lname"],
+                                                                                                  details["ID"],
+                                                                                                  details["lang"],
+                                                                                                  details["email"], )
+print(text)
