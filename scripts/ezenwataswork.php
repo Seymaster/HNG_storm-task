@@ -19,6 +19,6 @@ class Hng {
   }
 }
 
-$eze = new Hng("Ezenwata","Destiny","HNG-05063","PHP","ezenwatairoegbu97@gmail.com");
+$eze = new Hng("Ezenwata","Destiny","HNG-05063","PHP","ezenwataobioma96@gmail.com");
 echo $eze->get_task();
 ?>
