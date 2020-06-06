@@ -5,5 +5,5 @@ const taskTwo = {
     language: "JavaScript",
     id: "HNG-06713",
     };
-    str_output = `Hello World, this is [${taskTwo.firstName}] [${taskTwo.lastName}] [${taskTwo.id}] using [${taskTwo.language}] for stage 2 task. ${taskTwo.email}`;
+    str_output = `Hello World, this is [${taskTwo.firstName}] [${taskTwo.lastName}] with HNGi7 ID [${taskTwo.id}] using [${taskTwo.language}] for stage 2 task. ${taskTwo.email}`;
     console.log(str_output);
