@@ -1,7 +1,10 @@
 <?php
+            $firstName ="Nkechi";
+            $LastName = "Ebogha";
+            $InternID = "HNG-06074"; 
+            $Language = "PHP";
+            $Email = "favourebogha@gmail.com";
 ​
-     $variable = "Hello World, this is [Nkechi Ebogha] with HNGi7 ID [HNG-06074]
-     using [PHP]for stage 2 task. favourebogha@gmail.com";
+    echo "Hello World, this is [{$firstName}] [{$LastName}] with HNGi7 ID [{$InternID}] using [{$Language}] for stage 2 task. {$Email}";
 ​
-     echo $variable;
-?>
+ ?>
