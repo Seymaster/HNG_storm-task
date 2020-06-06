@@ -1,5 +1,3 @@
-//HNG-i7 stage 1 ignition source code
-//--------------------------------------------------------------------------------------------------//
 let internProfile = {
 	firstName: "Emmanuel",
 	lastName: "Alao",
@@ -8,9 +6,4 @@ let internProfile = {
 	email: "emmanuel.alao55@gmail.com"
 }
 
-console.log(`Hello World, This is [${internProfile.firstName}] [${internProfile.lastName}] 
-with HNGi7 ID [${internProfile.id}]
-using [${internProfile.language}]
-for stage 2 task. ${internProfile.email}`);
-
-//---------------------------------------------------------------------------------------------------//
+console.log(`Hello World, this is [${internProfile.firstName}] [${internProfile.lastName}] with HNGi7 ID [${internProfile.id}] using [${internProfile.language}] for stage 2 task. ${internProfile.email}`);
