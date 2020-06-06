@@ -1,6 +1,2 @@
-Firstname ='[Adefolake]'
-Lastname ='[Olanrewaju]'
-HNGID= '[HNG-03335]'
-Language ='[python]'
-Email = 'olafolake13@gmail.com'
-print('Hello World, this is '+ Firstname, Lastname, 'with HNGi7 ID', HNGID,'using', Language, 'for stage 2 task. ' + Email)
+output = "Hello World, this is [Adefolake] [Olanrewaju] with HNGi7 ID [HNG-03335] using [Python] for stage 2 task. olafolake13@gmail.com"
+print(output)
