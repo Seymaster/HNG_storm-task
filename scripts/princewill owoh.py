@@ -2,7 +2,7 @@ greeting = "Hello World"
 first_name = "Princewill"
 last_name = "Owoh"
 HNGi7_ID = "HNG-04232"
-language = "Python"
+language = "python"
 email = "princewillowoh18@gmail.com"
 
 
