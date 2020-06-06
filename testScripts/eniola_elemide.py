@@ -15,7 +15,7 @@ def hng_task2(details):
     return ("Hello World, this is "+details["firstname"]+
     " "+ details["lastname"]+" "+
     "with HNGi7 ID "+details["hngi7_id"]+" using "+
-    details["programming_language"]+" "+"for stage 2 task."+details["mail"])
+    details["programming_language"]+" "+"for stage 2 task. "+details["mail"])
 
 intern_info=hng_task2(details)
 print(intern_info)
