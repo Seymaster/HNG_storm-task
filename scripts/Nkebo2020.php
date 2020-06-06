@@ -1,10 +1,8 @@
 <?php
-            $firstName ="Nkechi";
-            $LastName = "Ebogha";
-            $InternID = "HNG-06074"; 
-            $Language = "PHP";
-            $Email = "favourebogha@gmail.com";
-​
-    echo "Hello World, this is [{$firstName}] [{$LastName}] with HNGi7 ID [{$InternID}] using [{$Language}] for stage 2 task. {$Email}";
-​
+$firstname = "Nkechi";
+$lastname = "Ebogha";
+$ID = "HNG-06074";
+$language = "PHP";
+$email ="favourebogha@gmail.com";
+ echo "Hello World, this is [". $firstname ."] [". $lastname ."] with HNGi7 ID [". $ID ."] using [". $language ."] for stage 2 task. " .$email;
  ?>
