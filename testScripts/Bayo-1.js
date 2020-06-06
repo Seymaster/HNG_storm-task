@@ -7,6 +7,6 @@ const projectOutput = function() {
         language : "JavaScript",
         email : "davidfayanju01@gmail.com"
     }
-    console.log(`Hello World, this is [${info.firstName}] [${info.lastName}]  with HNGi7 ID [${info.id}] using [${info.language}] for stage 2 task. ${info.email}`)
+    console.log(`Hello World, this is [${info.firstName}] [${info.lastName}] with HNGi7 ID [${info.id}] using [${info.language}] for stage 2 task. ${info.email}`)
 }
 projectOutput()
