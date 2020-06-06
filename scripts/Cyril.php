@@ -1,17 +1,21 @@
+
+
+
 <?php
 
-$firstName="[Gabriel]";
-$lastName="[Ibanga]";
-$email="ibgabcy@gmail.com";
-$id="[HNG-05494]";
-$lang="[PHP]";
-echo "Hello World, this is $firstName $lastName with HNGi7 ID $id using $lang for stage 2 task. $email";
+$sef = array(
+    "firstName" => "Gabriel",
+    "lastName" => "Ibanga",
+    "language" => "PHP",
+    "id" => "HNG-05494",
+    "email" => "ibgabcy@gmail.com"
+);
 
+
+$message = "Hello World, this is [{$sef['firstName']}] [{$sef['lastName']}] with HNGi7 ID [{$sef['id']}] using [{$sef['language']}] for stage 2 task. ibgabcy@gmail.com";
+
+
+echo $message;
 ?>
-
-
-
-
-
 
 
