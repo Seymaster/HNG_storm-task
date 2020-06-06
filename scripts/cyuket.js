@@ -1,14 +1,7 @@
-var cyuketInfo = {
-  id: "HNG-01524",
-  lastName: "Uket",
-  firstName: "Cyril",
-  email: "cyriluket12@gmail.com",
-  language: "Flutter",
-};
-
-const printMyData = () => {
-  let res = `Hello World, this is[${cyuketInfo.firstName}][${cyuketInfo.lastName}] with HNGi7 ID[${cyuketInfo.id}]using[${cyuketInfo.language}]for stage 2 task.${cyuketInfo.email}`;
-  return res;
-};
-
-console.log(printMyData());
+const fullname = "Tchakounte Amir";
+const id = "HNG-06436";
+const language = "Javascript";
+const email = "amirzoutor@gmail.com";
+console.log(
+  `Hello World, this is ${fullname} with HNGi7 ID ${id} using ${language} for stage 2 task.email ${email}`
+);
