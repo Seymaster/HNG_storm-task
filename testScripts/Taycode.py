@@ -7,7 +7,7 @@ class HNGUser:
 
     def return_result(self):
         print(f'Hello World, this is {self.name} with HNGi7 ID {self.id} using {self.language}'
-              f' for stage 2 task.{self.email}')
+              f' for stage 2 task. {self.email}')
 
 
 nameValue = "Abdulmateen Tairu"
