@@ -1,5 +1,3 @@
-
-
 var myName = "[Joshua] [Mba]";
 var HNG_ID = "[HNG-04870]";
 var ChosenLang = "[JavaScript]";
