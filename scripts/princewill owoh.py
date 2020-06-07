@@ -1,14 +1,10 @@
-greeting = "Hello world"
-first_name = "Princewill"
 last_name = "Owoh"
+first_name = "Princewill"
 HNGi7_ID = "HNG-04232"
 language = "Python"
 email = "princewillowoh18@gmail.com"
 
-
-def script():
-    result = f'{greeting}, this is [{first_name}] [{last_name}] with HNGi7 ID [{HNGi7_ID}] using [{language}] for stage 2 Task {email}'
-    return result
-
-
-print(script())
+# output for the intern task
+def script ():
+    print("Hello World, this is [{}] [{}] with HNGi7 ID [{}] using [{}] for stage 2 task. {}".format(last_name,first_name,HNGi7_ID,language,email))
+script()

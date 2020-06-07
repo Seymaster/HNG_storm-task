@@ -1,7 +1,8 @@
 <?php
-$name="John Mukuria";
-$id="HNG-03827";
-$lang="PHP";
+$fname="[John]";
+$lname="[Mukuria]";
+$id="[HNG-03827]";
+$lang="[PHP]";
 $email="thiakajoseph@gmail.com";
-echo "Hello world, this is $name  with HNGI7 ID $id  using $lang for stage 2 task.  $email";
+echo "Hello world, this is $fname $lname with HNGI7 ID $id using $lang for stage 2 task. $email";
 ?>

@@ -1,7 +1,7 @@
 function output() {
     var data = {
         firstName: "[Bolanle]",
-        lastName: "[Alaka-Coker]",
+        lastName: "[Coker]",
         language: "[Javascript]",
         id: "[HNG-01872]",
     };
