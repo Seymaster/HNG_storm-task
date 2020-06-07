@@ -1,9 +1,6 @@
-let myDetails = [
-	'Godstime',
-	'Nwujiokah',
-	'HNG-06077',
-	'javascript',
-	'godstimeonyibe2@gmail.com'
-]
-let result = 'Hello world, this is '+myDetails[0]+" "+myDetails[1]+" with HNGi7 ID "+myDetails[2]+" "+" using "+myDetails[3]+" language for Stage 2 task. "+"here is my email address "+myDetails[4];
-console.log(result)
+var fname = '[Godstime]';
+var lname = '[Nwujiokah]';
+var hngid = '[HNG-06077]';
+var lang = '[javascript]';
+var email = 'godstimeonyibe2@gmail.com';
+console.log("Hello world, this is " + fname + " " + lname + " with HNGi7 ID " + hngid + " using " + lang + " for stage 2 task. " + email);
