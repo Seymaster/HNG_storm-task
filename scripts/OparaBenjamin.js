@@ -6,7 +6,7 @@ function StageTwo(myName, hngId, languageUsed, email){
 }
 
 function helloDisplay(myName, myId, language, email){
-    console.log(`Hello World, this is ${myName} with HNGi7 ID ${myId} using ${language} for stage 2 task.${email}`)
+    console.log(`Hello World, this is ${myName} with HNGi7 ID ${myId} using ${language} for stage 2 task. ${email}`)
 }
 
 let putName="Opara Benjamin";
