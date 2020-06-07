@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html>
-<body>
+
 
 <?php
 
@@ -12,5 +10,3 @@ hngTask();
 
 ?>
 
-</body>
-</html>
