@@ -1,0 +1,1 @@
+print("Hello World, this is [Brian] [Orinah] with HNGi7 ID [HNG-00264] using [Python] for stage 2 task. brayohorinah@gmail.com")
