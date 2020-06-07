@@ -1,4 +1,4 @@
-const myDetails = (name, id, email, language) => {
-    console.log(`Hello World, this is [${name}] with HNGi7 ID [${id}]  using [${language}] for Stage 2. [${email}]`);
+let contact = (firstName, lastName, id, email, language) => {
+    console.log(`Hello World, this is [${firstName}] [${lastName}] with HNGi7 ID [${id}] using [${language}] for stage 2 task. [${email}]`);
 }
-myDetails("AbdulRahman-Abu", "HNG-03461", "aburahman430@gmail.com", "JavaScript");
+contact("AbdulRahman", "Abu", "HNG-03461", "aburahman430@gmail.com", "JavaScript");
